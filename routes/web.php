@@ -10,7 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Http\Controllers\CustomerController;
+use App\User;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/test/{name}', 'CustomerController@searchByName');
+
+Route::get('/test', 'CustomerController@getall');
