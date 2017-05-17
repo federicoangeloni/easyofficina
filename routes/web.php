@@ -17,7 +17,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//LIST ALL CUSTOMERS
+Route::get('/customers', 'CustomerController@getall');
 
-Route::get('/test/{name}', 'CustomerController@searchByName');
 
-Route::get('/test', 'CustomerController@getall');
+//SEARCH CUSTOMERS
+Route::get('/customers/search', 'CustomerController@searchIndex');
+Route::post('/customers/search', 'CustomerController@searchResult');
+
+//ADD CUSTOMER
+Route::get('/customers/add', 'CustomerController@addIndex');
+Route::post('/customers/add', 'CustomerController@add');
+
+//Route::get('/customers/{id}', 'CustomerController@getByID');

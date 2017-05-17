@@ -9,13 +9,20 @@
 namespace App\Repositories;
 
 
+use Illuminate\Database\Eloquent\Model;
+
 interface RepositoryInterface
 {
+
     public function getall();
+
+    public function search(array $filters);
 
     public function getfirst();
 
-    public function insert();
+    public function insert(Model $model);
+
+    public function getmodel();
 
     public function update();
 

@@ -11,6 +11,7 @@ namespace App\Repositories;
 
 
 use App\Repositories\Repository as Repository;
+use App\Customer as Customer;
 
 class CustomerRepository extends Repository {
 
@@ -19,18 +20,12 @@ class CustomerRepository extends Repository {
      *
      * @return mixed
      */
-    function model()
-    {
-        // TODO: Implement getmodel() method.
-        return "App\Customer";
+
+
+    public function setmodel(){
+       return $this->model= "App\Customer";
     }
 
-
-    function searchByName($name){
-
-        return $this->model->where('name',$name)->get();
-
-    }
 
 }
 
