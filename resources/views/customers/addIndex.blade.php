@@ -54,6 +54,13 @@
             </div>
 
             <div class="form-group">
+                <label for="zipcode" class="col-sm-3 control-label">Address</label>
+                <div class="col-sm-6">
+                    <input type="text" name="address" id="task-name" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group">
                 <label for="zipcode" class="col-sm-3 control-label">CAP</label>
                 <div class="col-sm-6">
                     <input type="text" name="zipcode" id="task-name" class="form-control">
