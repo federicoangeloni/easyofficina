@@ -16,13 +16,13 @@ interface RepositoryInterface
 
     public function getall();
 
+    public function getById($id);
+
     public function search(array $filters);
 
-    public function getfirst();
+    public function insert(Model & $model);
 
-    public function insert(Model $model);
-
-    public function getmodel();
+    public function setmodel();
 
     public function update();
 

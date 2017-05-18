@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Support\Facades\Input;
+
+
+use \ReflectionProperty as ReflectionProperty;
+use \ReflectionClass as ReflectionClass;
 
 
 class Controller extends BaseController
@@ -14,34 +19,45 @@ class Controller extends BaseController
 
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    protected $Repository;
+    protected $ActiveRepository;
+    protected $ActiveModel;
 
     public function getall(){
-
-        return $this->Repository->getall();
-
+        return $this->ActiveRepository->getall();
     }
 
-    public function searchResult(){
-        $filters=Input::all();
+    public function getById($id){
+        return $this->ActiveRepository->getById($id);
+    }
+
+    public function searchResult(Request $request){
+
+        //Save The POST Request to filter variable
+        $filters=$request->request->all();
+
+        //Remove Empty Fields And Auth Token From Filters Array
         foreach ($filters as $key => $value){
             if($key=="_token" || $value=="") {
                 unset($filters[$key]);
             }
         }
-       return $this->Repository->search($filters);
-
+        //Return the Result of the Search to the Controller
+       return $this->ActiveRepository->search($filters);
     }
 
-    public function add(){
-        $data=Input::all();
+    public function add(Request $request){
 
-        $modelname=$this->Repository->getmodel();
-        $model = new $modelname();
-        $model->create($data);
+        //Validate the Form with Validation Rules of the Active Model
+        $rules=new ReflectionProperty($this->ActiveModel,"rules");
+        $this->validate($request,$rules->getValue());
 
-        $modelid=$this->Repository->insert($model);
-        echo($modelid);
+        //Create a new instance of the Active model
+        $model = new $this->ActiveModel($request->request->all());
+        //Save Model to Repository
+        $this->ActiveRepository->insert($model);
+        //Return The Model to the Active Controller
+        return $model;
+
     }
 
 }

@@ -17,9 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//LIST ALL CUSTOMERS
-Route::get('/customers', 'CustomerController@getall');
-
 
 //SEARCH CUSTOMERS
 Route::get('/customers/search', 'CustomerController@searchIndex');
@@ -29,4 +26,7 @@ Route::post('/customers/search', 'CustomerController@searchResult');
 Route::get('/customers/add', 'CustomerController@addIndex');
 Route::post('/customers/add', 'CustomerController@add');
 
-//Route::get('/customers/{id}', 'CustomerController@getByID');
+//LIST ALL CUSTOMERS
+Route::get('/customers', 'CustomerController@getall');
+Route::get('/customers/{id}', 'CustomerController@getById');
+

@@ -21,7 +21,6 @@ class CustomerRepository extends Repository {
      * @return mixed
      */
 
-
     public function setmodel(){
        return $this->model= "App\Customer";
     }
