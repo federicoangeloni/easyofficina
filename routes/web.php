@@ -13,11 +13,13 @@
 use App\Http\Controllers\CustomerController;
 use App\User;
 
+
+//--------------------------- GENERAL ROUTES ---------------------------------------
 Route::get('/', function () {
     return view('welcome');
 });
 
-
+//--------------------------- CUSTOMER ROUTES ---------------------------------------
 //SEARCH CUSTOMERS
 Route::get('/customers/search', 'CustomerController@searchIndex');
 Route::post('/customers/search', 'CustomerController@searchResult');
@@ -29,4 +31,21 @@ Route::post('/customers/add', 'CustomerController@add');
 //LIST ALL CUSTOMERS
 Route::get('/customers', 'CustomerController@getall');
 Route::get('/customers/{id}', 'CustomerController@getById');
+
+//---------------------------- VEHICLES ROUTES --------------------------------------
+
+//SEARCH VEHICLES
+Route::get('/vehicles/search', 'VehicleController@searchIndex');
+Route::post('/vehicles/search', 'VehicleController@searchResult');
+Route::get('/vehicles/search/{ownerid}', 'VehicleController@searchByOwnerId');
+
+//ADD VEHICLES
+Route::get('/vehicles/add/{ownerid}', 'VehicleController@addIndex');
+Route::post('/vehicles/add', 'VehicleController@add');
+
+//LIST ALL VEHICLES
+Route::get('/vehicles', 'VehicleController@getall');
+Route::get('/vehicles/{id}', 'VehicleController@getById');
+
+
 

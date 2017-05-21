@@ -15,7 +15,7 @@ class Customer extends Model
     public static $rules = array(
         'name'             => 'required',                        // just a normal required validation
         'surname'            => 'required',
-       // 'address'            => 'required',    // required and must be unique in the ducks table
-      //  'email'         => 'required|email|unique:ducks',
+        // 'address'            => 'required',    // required and must be unique in the ducks table
+        //  'email'         => 'required|email|unique:ducks'
      );
 }

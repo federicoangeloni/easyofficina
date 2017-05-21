@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('header','Ricerca Clienti')
+@section('header','Ricerca Veicoli')
 
 @section('content')
 
@@ -11,29 +11,40 @@
 
 
     <!-- New Task Form -->
-        <form action="/customers/search" method="POST" class="form-horizontal">
+        <form action="/vehicles/search" method="POST" class="form-horizontal">
         {{ csrf_field() }}
 
         <!-- Task Name -->
             <div class="form-group">
-                <label for="name" class="col-sm-3 control-label">Name</label>
+                <label for="name" class="col-sm-3 control-label">ID Veicolo</label>
 
                 <div class="col-sm-6">
-                    <input type="text" name="name" id="task-name" class="form-control">
+                    <input type="text" name="id" id="task-name" class="form-control">
                 </div>
 
 
             </div>
 
             <div class="form-group">
-                <label for="surname" class="col-sm-3 control-label">SurName</label>
+                <label for="surname" class="col-sm-3 control-label">ID Customer</label>
 
                 <div class="col-sm-6">
-                    <input type="text" name="surname" id="task-name" class="form-control">
+                    <input type="text" name="ownerid" id="task-name" class="form-control">
                 </div>
 
 
             </div>
+
+            <div class="form-group">
+                <label for="surname" class="col-sm-3 control-label">Modello</label>
+
+                <div class="col-sm-6">
+                    <input type="text" name="model" id="task-name" class="form-control">
+                </div>
+
+
+            </div>
+
 
 
             <!-- Add Task Button -->

@@ -45,6 +45,7 @@ class Controller extends BaseController
        return $this->ActiveRepository->search($filters);
     }
 
+
     public function add(Request $request){
 
         //Validate the Form with Validation Rules of the Active Model
