@@ -1,8 +1,9 @@
 <html>
 
-	<head>
-		<title>Biblios - @yield('title')</title>
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css" />
+<head>
+    <title>EasyOfficina - @yield('title')</title>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css"/>
 </head>
 
 <body>

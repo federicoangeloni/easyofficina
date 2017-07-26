@@ -13,7 +13,8 @@ namespace App\Repositories;
 use App\Repositories\Repository as Repository;
 use App\Vehicle as Vehicle;
 
-class VehicleRepository extends Repository {
+class VehicleRepository extends Repository
+{
 
     /**
      * Specify Model class name
@@ -21,15 +22,17 @@ class VehicleRepository extends Repository {
      * @return mixed
      */
 
-    public function setmodel(){
-       return $this->model= "App\Vehicle";
+    public function setmodel()
+    {
+        return $this->model = "App\Vehicle";
     }
 
-    public function searchByOwnerId($ownerid){
-        $query=array();
+    public function searchByOwnerId($ownerid)
+    {
+        $query = array();
         $key = 'ownerid';
-        $query[]=array($key,'LIKE',"%$ownerid%");
-        return  $this->model->where($query)->get();
+        $query[] = array($key, 'LIKE', "%$ownerid%");
+        return $this->model->where($query)->get();
     }
 
 

@@ -25,6 +25,7 @@ class CreateJobsTable extends Migration
             $table->foreign('vehicleid')->references('id')->on('vehicles')->onDelete('cascade');
         });
     }
+
     /**
      * Reverse the migrations.
      *

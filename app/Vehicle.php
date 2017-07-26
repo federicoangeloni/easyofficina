@@ -8,15 +8,15 @@ class Vehicle extends Model
 {
     public $timestamps = false;
     protected $table = 'vehicles';
-    public $fillable =['model','plate','chassis','enginecode','kilometers','matriculation','ownerid'];
+    public $fillable = ['ownerid', 'model', 'plate', 'chassis', 'enginecode', 'kilometers', 'matriculation'];
 
     public static $rules = array(
-        'ownerid'             => 'required',
-        'model'             => 'required',
-        'plate'            => 'required',
-        'chassis'            => 'required',
-        'enginecode'            => 'required',
-        'kilometers'            => 'required',
-        'matriculation'            => 'required'
+        'ownerid' => 'required',
+        'model' => 'required',
+        'plate' => 'required',
+        'chassis' => 'required',
+        'enginecode' => 'required',
+        'kilometers' => 'required',
+        'matriculation' => 'required'
     );
 }

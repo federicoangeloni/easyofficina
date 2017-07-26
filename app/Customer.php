@@ -9,13 +9,20 @@ class Customer extends Model
 
     public $timestamps = false;
     protected $table = 'customers';
-    public $fillable =['name','surname','address','zipcode','city','ssn','telephone'];
+    public $fillable = ['name', 'surname', 'nominative', 'address', 'zipcode', 'city', 'vat_number', 'ssn', 'telephone', 'fax', 'email'];
 
 
     public static $rules = array(
-        'name'             => 'required',                        // just a normal required validation
-        'surname'            => 'required',
-        // 'address'            => 'required',    // required and must be unique in the ducks table
-        //  'email'         => 'required|email|unique:ducks'
-     );
+        'name' => 'nullable',
+        'surname' => 'nullable',
+        'nominative' => 'nullable',
+        'address' => 'required',
+        'zipcode' => 'required',
+        'city' => 'required',
+        'vat_number' => 'nullable',
+        'ssn' => 'nullable',
+        'telephone' => 'required',
+        'fax' => 'nullable',
+        'email' => 'nullable',
+    );
 }

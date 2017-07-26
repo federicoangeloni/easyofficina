@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 use App\Http\Controllers\CustomerController;
 use App\User;
 
@@ -25,7 +26,8 @@ Route::get('/customers/search', 'CustomerController@searchIndex');
 Route::post('/customers/search', 'CustomerController@searchResult');
 
 //ADD CUSTOMER
-Route::get('/customers/add', 'CustomerController@addIndex');
+Route::get('/customers/addPrivate', 'CustomerController@addPrivateIndex');
+Route::get('/customers/addEnterprise', 'CustomerController@addEnterpriseIndex');
 Route::post('/customers/add', 'CustomerController@add');
 
 //LIST ALL CUSTOMERS

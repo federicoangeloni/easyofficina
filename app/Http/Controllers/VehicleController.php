@@ -15,7 +15,8 @@ class VehicleController extends Controller
      * @var VehicleRepository
      */
 
-    public function __construct(VehicleRepository $vehicleRepository,Vehicle $vehiclemodel) {
+    public function __construct(VehicleRepository $vehicleRepository, Vehicle $vehiclemodel)
+    {
         $this->ActiveRepository = $vehicleRepository;
         $this->ActiveModel = $vehiclemodel;
     }
@@ -23,42 +24,45 @@ class VehicleController extends Controller
 
     public function getall()
     {
-        $vehicles= parent::getall();
-        return view('vehicles.vehicleList')->with('vehicles',$vehicles);
+        $vehicles = parent::getall();
+        return view('vehicles.vehicleList')->with('vehicles', $vehicles);
     }
 
-    public function getById($id){
+    public function getById($id)
+    {
         $vehicle = parent::getById($id);
-        return view('vehicles.vehicle')->with('vehicle',$vehicle);
+        return view('vehicles.vehicle')->with('vehicle', $vehicle);
     }
 
-    public function searchIndex(){
+    public function searchIndex()
+    {
         return view('vehicles.searchIndex');
     }
 
-    public function searchByOwnerId($ownerid){
+    public function searchByOwnerId($ownerid)
+    {
         $vehicles = $this->ActiveRepository->searchByOwnerId($ownerid);
-        return view('vehicles.vehicleList')->with('vehicles',$vehicles);
+        return view('vehicles.vehicleList')->with('vehicles', $vehicles);
     }
 
-    public function searchResult(Request $filters){
+    public function searchResult(Request $filters)
+    {
 
-       $vehicles = parent::searchResult($filters);
-       return view('vehicles.vehicleList')->with('vehicles',$vehicles);
+        $vehicles = parent::searchResult($filters);
+        return view('vehicles.vehicleList')->with('vehicles', $vehicles);
 
     }
 
-    public function addIndex($ownerid){
-        return view('vehicles.addIndex')->with('ownerid',$ownerid);
+    public function addIndex($ownerid)
+    {
+        return view('vehicles.addIndex')->with('ownerid', $ownerid);
     }
 
-    public function add(Request $request){
+    public function add(Request $request)
+    {
         $vehicle = parent::add($request);
-        return view('vehicles.vehicle')->with('vehicle',$vehicle);
+        return view('vehicles.vehicle')->with('vehicle', $vehicle);
     }
-
-
-
 
 
 }

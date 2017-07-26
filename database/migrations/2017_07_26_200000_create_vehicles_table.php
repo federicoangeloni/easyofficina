@@ -15,17 +15,18 @@ class CreateVehiclesTable extends Migration
     {
         Schema::create('vehicles', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('model');
             $table->string('plate');
             $table->string('chassis');
             $table->string('enginecode');
-            $table->integer('kilometers');
+            $table->string('kilometers');
             $table->date('matriculation');
 
             $table->integer('ownerid')->unsigned();
         });
 
-        Schema::table('vehicles',function(Blueprint $table){
-           $table->foreign('ownerid')->references('id')->on('customers')->onDelete('cascade');
+        Schema::table('vehicles', function (Blueprint $table) {
+            $table->foreign('ownerid')->references('id')->on('customers')->onDelete('cascade');
 
 
         });

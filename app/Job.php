@@ -8,10 +8,11 @@ class Job extends Model
 {
     public $timestamps = false;
     protected $table = 'jobs';
-    public $fillable =['jobdate','amount','vehicleid'];
+    public $fillable = ['jobdate', 'amount', 'vehicleid'];
 
     public static $rules = array(
-        'jobdate'             => 'required',
-        'vehicleid'            => 'required'
+        'jobdate' => 'required',
+        'amount' => 'nullable',
+        'vehicleid' => 'required'
     );
 }

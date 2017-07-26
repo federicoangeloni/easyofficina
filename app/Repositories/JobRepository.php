@@ -13,7 +13,8 @@ namespace App\Repositories;
 use App\Repositories\Repository as Repository;
 use App\Job as Job;
 
-class JobRepository extends Repository {
+class JobRepository extends Repository
+{
 
     /**
      * Specify Model class name
@@ -21,8 +22,9 @@ class JobRepository extends Repository {
      * @return mixed
      */
 
-    public function setmodel(){
-       return $this->model= "App\Job";
+    public function setmodel()
+    {
+        return $this->model = "App\Job";
     }
 
 

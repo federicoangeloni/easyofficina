@@ -10,22 +10,23 @@ class CreateCustomersTable extends Migration
      * Run the migrations.
      *
      * @return void
-     * pensa a carlotta e rilassati
      */
     public function up()
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('surname');
+            $table->string('name')->nullable();
+            $table->string('surname')->nullable();
+            $table->string('nominative')->nullable();
             $table->string('address');
-            $table->integer('zipcode');
+            $table->string('zipcode');
             $table->string('city');
-            $table->string('ssn');
-            $table->bigInteger('telephone');
-
+            $table->string('vat_number')->nullable();
+            $table->string('ssn')->nullable();
+            $table->string('telephone');
+            $table->string('fax')->nullable();
+            $table->string('email')->nullable();
         });
-
     }
 
     /**

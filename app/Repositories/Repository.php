@@ -20,36 +20,42 @@ abstract class Repository implements RepositoryInterface
 
     public function __construct(App $app)
     {
-        $this->app=$app;
-        $this->model= $this->app->make($this->setmodel());
+        $this->app = $app;
+        $this->model = $this->app->make($this->setmodel());
     }
 
 
-    public function getall(){
+    public function getall()
+    {
         return $this->model->all();
     }
 
-    public function getById($id){
+    public function getById($id)
+    {
         return $this->model->find($id);
     }
 
-    public function search(array $filters){
-        $query=array();
-        foreach ($filters as $key => $value){
-               $query[]=array($key,'LIKE',"%$value%");
+    public function search(array $filters)
+    {
+        $query = array();
+        foreach ($filters as $key => $value) {
+            $query[] = array($key, 'LIKE', "%$value%");
         }
-       return  $this->model->where($query)->get();
+        return $this->model->where($query)->get();
     }
 
-    public function insert(Model & $model){
+    public function insert(Model & $model)
+    {
         $model->save();
     }
 
-    public function update(){
+    public function update()
+    {
 
     }
 
-    public function delete(){
+    public function delete()
+    {
 
     }
 

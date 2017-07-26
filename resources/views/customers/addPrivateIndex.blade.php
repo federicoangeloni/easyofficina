@@ -1,9 +1,19 @@
 @extends('layouts.layout')
 
-@section('title','Search Customers')
-@section('header','Search Customers')
+@section('title','Add a new Private Customer')
+@section('header','Add a new Private Customer')
 
 @section('content')
+
+    @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
     <!-- Bootstrap Boilerplate... -->
 
@@ -12,7 +22,7 @@
 
 
         <!-- New Task Form -->
-        <form action="/customers/search" method="POST" class="form-horizontal">
+        <form action="/customers/add" method="POST" class="form-horizontal">
         {{ csrf_field() }}
 
         <!-- Task Name -->
@@ -30,7 +40,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group hidden">
                 <label for="nominative" class="col-sm-3 control-label">Nominative</label>
                 <div class="col-sm-6">
                     <input type="text" name="nominative" id="task-name" class="form-control" value="">
@@ -44,7 +54,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group hidden">
                 <label for="vat_number" class="col-sm-3 control-label">VAT Number</label>
                 <div class="col-sm-6">
                     <input type="text" name="vat_number" id="task-name" class="form-control" value="">
@@ -79,7 +89,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group hidden">
                 <label for="fax" class="col-sm-3 control-label">Fax</label>
                 <div class="col-sm-6">
                     <input type="text" name="fax" id="task-name" class="form-control" value="">
@@ -98,7 +108,7 @@
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-6">
                     <button type="submit" class="btn btn-default center-block">
-                        <i class="fa fa-plus"></i> Search
+                        <i class="fa fa-plus"></i> Add
                     </button>
                 </div>
             </div>

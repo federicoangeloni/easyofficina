@@ -22,35 +22,39 @@ class Controller extends BaseController
     protected $ActiveRepository;
     protected $ActiveModel;
 
-    public function getall(){
+    public function getall()
+    {
         return $this->ActiveRepository->getall();
     }
 
-    public function getById($id){
+    public function getById($id)
+    {
         return $this->ActiveRepository->getById($id);
     }
 
-    public function searchResult(Request $request){
+    public function searchResult(Request $request)
+    {
 
         //Save The POST Request to filter variable
-        $filters=$request->request->all();
+        $filters = $request->request->all();
 
         //Remove Empty Fields And Auth Token From Filters Array
-        foreach ($filters as $key => $value){
-            if($key=="_token" || $value=="") {
+        foreach ($filters as $key => $value) {
+            if ($key == "_token" || $value == "") {
                 unset($filters[$key]);
             }
         }
         //Return the Result of the Search to the Controller
-       return $this->ActiveRepository->search($filters);
+        return $this->ActiveRepository->search($filters);
     }
 
 
-    public function add(Request $request){
+    public function add(Request $request)
+    {
 
         //Validate the Form with Validation Rules of the Active Model
-        $rules=new ReflectionProperty($this->ActiveModel,"rules");
-        $this->validate($request,$rules->getValue());
+        $rules = new ReflectionProperty($this->ActiveModel, "rules");
+        $this->validate($request, $rules->getValue());
 
         //Create a new instance of the Active model
         $model = new $this->ActiveModel($request->request->all());

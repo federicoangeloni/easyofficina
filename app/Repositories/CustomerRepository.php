@@ -13,7 +13,8 @@ namespace App\Repositories;
 use App\Repositories\Repository as Repository;
 use App\Customer as Customer;
 
-class CustomerRepository extends Repository {
+class CustomerRepository extends Repository
+{
 
     /**
      * Specify Model class name
@@ -21,8 +22,9 @@ class CustomerRepository extends Repository {
      * @return mixed
      */
 
-    public function setmodel(){
-       return $this->model= "App\Customer";
+    public function setmodel()
+    {
+        return $this->model = "App\Customer";
     }
 
 
