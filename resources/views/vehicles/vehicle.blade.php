@@ -38,6 +38,9 @@
                 <td>
                     <a href="/jobs/add/{{$vehicle->id}}"><input type="button" value="New Job"/></a>
                 </td>
+                <td>
+                    <a href="/jobs/search/{{$vehicle->id}}"><input type="button" value="List Job"/></a>
+                </td>
             </tr>
             </tbody>
         </table>

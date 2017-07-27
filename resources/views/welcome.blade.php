@@ -30,12 +30,11 @@
     <a href="{{ url('/vehicles/add/1') }}">Aggiungi un nuovo veicolo (relazionato con un cliente)</a><br>
     <hr>
     <h1>Gestione Intervento</h1>
-    <a href="">Elenca tutti gli interventi</a><br>
-    <a href="">Cerca un intervento</a><br>
-    <a href="">Visualizza interventi relativi a un cliente(id cliente)</a><br>
-    <a href="">Visualizza interventi relativi a un veicolo(id veicolo)</a><br>
-    <a href="">Visualizza dettagli intervento (id intervento)</a><br>
-    <a href="">Crea un nuovo intervento (relazionato con un veicolo)</a><br>
+    <a href="{{ url('/jobs') }}">Elenca tutti gli interventi</a><br>
+    <a href="{{ url('/jobs/search') }}">Cerca un intervento</a><br>
+    <a href="{{ url('/jobs/search/1') }}">Visualizza interventi relativi a un veicolo(id veicolo)</a><br>
+    <a href="{{ url('/jobs/1') }}">Visualizza dettagli intervento(id intervento)</a><br>
+    <a href="{{ url('/jobs/add/1') }}">Crea un nuovo intervento (relazionato con un veicolo)</a><br>
     <hr>
 </div>
 

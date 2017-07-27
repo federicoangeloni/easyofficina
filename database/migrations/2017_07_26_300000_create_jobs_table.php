@@ -16,13 +16,23 @@ class CreateJobsTable extends Migration
         Schema::create('jobs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('jobdate');
-            $table->string('amount');
+            //$table->json('jobRows');
+            $table->longText('description')->nullable();
+            $table->string('amount')->nullable();
+            $table->boolean('completed')->default(false);
+
 
             $table->integer('vehicleid')->unsigned();
+            //$table->integer('shopAssistantId')->unsigned();
+            //$table->integer('mechanicId')->unsigned();
+            //$table->integer('paymentId')->unsigned();
         });
 
         Schema::table('jobs', function (Blueprint $table) {
             $table->foreign('vehicleid')->references('id')->on('vehicles')->onDelete('cascade');
+            //$table->foreign('shopAssistantId')->references('id')->on('users')->onDelete('cascade');
+            //$table->foreign('mechanicId')->references('id')->on('users')->onDelete('cascade');
+            //$table->foreign('paymentId')->references('id')->on('payments')->onDelete('cascade');
         });
     }
 

@@ -27,6 +27,14 @@ class JobRepository extends Repository
         return $this->model = "App\Job";
     }
 
+    public function searchByVehicleId($vehicleid)
+    {
+        $query = array();
+        $key = 'vehicleid';
+        $query[] = array($key, 'LIKE', "%$vehicleid%");
+        return $this->model->where($query)->get();
+    }
+
 
 }
 

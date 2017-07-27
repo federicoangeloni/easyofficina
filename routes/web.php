@@ -12,6 +12,8 @@
 */
 
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\VehicleController;
+use App\Http\Controllers\JobContoller;
 use App\User;
 
 
@@ -49,5 +51,18 @@ Route::post('/vehicles/add', 'VehicleController@add');
 Route::get('/vehicles', 'VehicleController@getall');
 Route::get('/vehicles/{id}', 'VehicleController@getById');
 
+//---------------------------- JOBS ROUTES --------------------------------------
 
+//SEARCH JOBS
+Route::get('/jobs/search', 'JobController@searchIndex');
+Route::post('/jobs/search', 'JobController@searchResult');
+Route::get('/jobs/search/{vehicleid}', 'JobController@searchByVehicleId');
+
+//ADD JOBS
+Route::get('/jobs/add/{vehicleid}', 'JobController@addIndex');
+Route::post('/jobs/add', 'JobController@add');
+
+//LIST ALL JOBS
+Route::get('/jobs', 'JobController@getall');
+Route::get('/jobs/{id}', 'JobController@getById');
 

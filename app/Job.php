@@ -8,11 +8,16 @@ class Job extends Model
 {
     public $timestamps = false;
     protected $table = 'jobs';
-    public $fillable = ['jobdate', 'amount', 'vehicleid'];
+    //protected $casts = ['jobRows' => 'array']; //Serve per fare il cast da db delle righe intervento
+    public $fillable = ['jobdate', 'vehicleId', /*'jobRows',*/
+        'description', 'amount', 'completed'];
 
     public static $rules = array(
         'jobdate' => 'required',
+        'vehicleId' => 'required',
+        //'jobRows' => 'nullable',
+        'description' => 'nullable',
         'amount' => 'nullable',
-        'vehicleid' => 'required'
+        'completed' => 'required'
     );
 }
