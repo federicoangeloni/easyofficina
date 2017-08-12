@@ -22,6 +22,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/test', function () {
+    return view('main');
+});
+
 //--------------------------- CUSTOMER ROUTES ---------------------------------------
 //SEARCH CUSTOMERS
 Route::get('/customers/search', 'CustomerController@searchIndex');

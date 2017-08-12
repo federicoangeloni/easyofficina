@@ -1,7 +1,8 @@
+{{--@extends('layouts.main')--}}
 @extends('layouts.layout')
 
-@section('title','List all customers')
-@section('header','List all customers')
+@section('title','List all Customers')
+@section('header','List all Customers')
 
 @section('content')
 
