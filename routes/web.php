@@ -23,7 +23,7 @@ Route::get('/', function () {
 });
 
 Route::get('/test', function () {
-    return view('main');
+    return view('layouts.main');
 });
 
 //--------------------------- CUSTOMER ROUTES ---------------------------------------
