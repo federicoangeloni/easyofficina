@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.main')
 
 @section('title','Jobs List')
 @section('header','Jobs List')
@@ -13,7 +13,7 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>id</th>
+                {{--<th>id</th>--}}
                 <th>Vehicle ID</th>
                 <th>Job Date</th>
                 <th>Description</th>
@@ -25,11 +25,11 @@
             @foreach($jobs as $job)
 
                 <tr>
-                    <td><p for="id" class="col-sm-3 control-label">{{$job->id}}</p></td>
+                    {{--<td><p for="id" class="col-sm-3 control-label">{{$job->id}}</p></td>--}}
                     <td><p for="vehicleid" class="col-sm-3 control-label"><a
                                     href="/vehicles/{{$job->vehicleid}}">{{$job->vehicleid}}</a></p></td>
-                    <td><p for="jobdate" class="col-sm-3 control-label">{{$job->jobdate}}</p></td>
-                    <td><p for="description" class="col-sm-3 control-label">{{$job->description}}</p></td>
+                    <td><p for="jobdate" class="col-sm-12 control-label">{{$job->jobdate}}</p></td>
+                    <td><p for="description" class="col-sm-12 control-label">{{$job->description}}</p></td>
                     <td><p for="amount" class="col-sm-3 control-label">{{$job->amount}}</p></td>
                     <td><p for="completed" class="col-sm-3 control-label">{{$job->completed}}</p></td>
                     <td>

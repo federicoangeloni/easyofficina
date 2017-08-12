@@ -1,50 +1,58 @@
-@extends('layouts.layout')
+@extends('layouts.main')
 
 @section('title','Vehicles Details')
 @section('header','Vehicles Details')
 
 @section('content')
 
+    <!-- Display Validation Errors -->
 
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+            <div class="box box-primary">
+                <div class="box-body box-profile">
 
-    <div class="panel-body">
-        <!-- Display Validation Errors -->
+                    <h3 class="profile-username text-center">{{$vehicle->model}}</h3>
 
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>id</th>
-                <th>Owner ID</th>
-                <th>Model</th>
-                <th>Plate</th>
-                <th>Chassis</th>
-                <th>Engine Code</th>
-                <th>Kilometers</th>
-                <th>Matriculation</th>
+                    <p class="text-muted text-center">Client Type</p>
 
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td><p for="id" class="col-sm-3 control-label">{{$vehicle->id}}</p></td>
-                <td><p for="ownerid" class="col-sm-3 control-label"><a
-                                href="/customers/{{$vehicle->ownerid}}">{{$vehicle->ownerid}}</a></p></td>
-                <td><p for="model" class="col-sm-3 control-label">{{$vehicle->model}}</p></td>
-                <td><p for="plate" class="col-sm-3 control-label">{{$vehicle->plate}}</p></td>
-                <td><p for="chassis" class="col-sm-3 control-label">{{$vehicle->chassis}}</p></td>
-                <td><p for="enginecode" class="col-sm-3 control-label">{{$vehicle->enginecode}}</p></td>
-                <td><p for="kilometers" class="col-sm-3 control-label">{{$vehicle->kilometers}}</p></td>
-                <td><p for="matriculation" class="col-sm-3 control-label">{{$vehicle->matriculation}}</p></td>
-                <td>
-                    <a href="/jobs/add/{{$vehicle->id}}"><input type="button" value="New Job"/></a>
-                </td>
-                <td>
-                    <a href="/jobs/search/{{$vehicle->id}}"><input type="button" value="List Job"/></a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+                    <ul class="list-group list-group-unbordered">
+                        <li class="list-group-item">
+                            <b>Plate</b> <a class="pull-right">{{$vehicle->plate}}</a>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Chassis</b> <a class="pull-right">{{$vehicle->chassis}}</a>
+                        </li>
+                        <li class="list-group-item">
+                            <b>EngineCode</b> <a class="pull-right">{{$vehicle->enginecode}}</a>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Kilometers</b> <a class="pull-right">{{$vehicle->kilometers}}</a>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Matriculation</b> <a class="pull-right">{{$vehicle->matriculation}}</a>
+                        </li>
 
+                    </ul>
+
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <a href="#" class="btn btn-primary btn-block"><i class="fa fa-edit"></i>  <b>Edit</b></a>
+                        </div>
+                        <div class="col-lg-4">
+                            <a href="/jobs/search/{{$vehicle->id}}" class="btn btn-primary btn-block"><i class="fa fa-wrench"></i>  <b> List Jobs</b> <i class="fa fa-wrench"></i></a>
+                        </div>
+                        <div class="col-lg-4">
+                            <a href="/jobs/add/{{$vehicle->id}}" class="btn btn-primary btn-block"><i class="fa fa-plus"></i> <b>  Add Job</b>  <i class="fa fa-wrench"></i>  </a>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
     </div>
+
 
 @endsection

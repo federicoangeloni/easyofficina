@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.main')
 
 @section('title','Vehicles List')
 @section('header','Vehicles List')

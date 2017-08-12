@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.main')
 
 @section('title','Customer Details')
 @section('header','Customer Details')
@@ -6,52 +6,69 @@
 @section('content')
 
 
-    <div class="panel-body">
+
+        <link rel="stylesheet" href="{{asset("css/customer.css")}}">
         <!-- Display Validation Errors -->
 
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>id</th>
-                <th>Name</th>
-                <th>Surname</th>
-                <th>Nominative</th>
-                <th>Address</th>
-                <th>ZIP Code</th>
-                <th>City</th>
-                <th>VAT Number</th>
-                <th>SSN</th>
-                <th>Telephone</th>
-                <th>Fax</th>
-                <th>Email</th>
-            </tr>
-            </thead>
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+                <div class="box box-primary">
+                    <div class="box-body box-profile">
+                        <i class="fa fa-user avatar"></i>
+                        <h3 class="profile-username text-center">{{$customer->name}} {{$customer->surname}}</h3>
 
-            <tbody>
-            <tr>
-                <td><p for="name" class="col-sm-3 control-label">{{$customer->id}}</p></td>
-                <td><p for="name" class="col-sm-3 control-label">{{$customer->name}}</p></td>
-                <td><p for="name" class="col-sm-3 control-label">{{$customer->surname}}</p></td>
-                <td><p for="name" class="col-sm-3 control-label">{{$customer->nominative}}</p></td>
-                <td><p for="name" class="col-sm-3 control-label">{{$customer->address}}</p></td>
-                <td><p for="name" class="col-sm-3 control-label">{{$customer->zipcode}}</p></td>
-                <td><p for="name" class="col-sm-3 control-label">{{$customer->city}}</p></td>
-                <td><p for="name" class="col-sm-3 control-label">{{$customer->vat_number}}</p></td>
-                <td><p for="name" class="col-sm-3 control-label">{{$customer->ssn}}</p></td>
-                <td><p for="name" class="col-sm-3 control-label">{{$customer->telephone}}</p></td>
-                <td><p for="name" class="col-sm-3 control-label">{{$customer->fax}}</p></td>
-                <td><p for="name" class="col-sm-3 control-label">{{$customer->email}}</p></td>
-                <td>
-                    <a href="/vehicles/add/{{$customer->id}}"><input type="button" value="Add Vehicle"/></a>
-                </td>
-                <td>
-                    <a href="/vehicles/search/{{$customer->id}}"><input type="button" value="List Vehicles"/></a>
-                </td>
-            </tr>
-            </tbody>
+                        <p class="text-muted text-center">Client Type</p>
 
-        </table>
+                        <ul class="list-group list-group-unbordered">
+                            <li class="list-group-item">
+                                <b>Nominative</b> <a class="pull-right">{{$customer->nominative}}</a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>Address</b> <a class="pull-right">{{$customer->address}}</a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>ZipCode</b> <a class="pull-right">{{$customer->zipcode}}</a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>City</b> <a class="pull-right">{{$customer->city}}</a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>VatNumber</b> <a class="pull-right">{{$customer->vat_number}}</a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>Ssn</b> <a class="pull-right">{{$customer->ssn}}</a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>Telephone</b> <a class="pull-right">{{$customer->telephone}}</a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>Fax</b> <a class="pull-right">{{$customer->fax}}</a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>Email</b> <a class="pull-right">{{$customer->email}}</a>
+                            </li>
+                        </ul>
 
-    </div>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <a href="#" class="btn btn-primary btn-block"><i class="fa fa-edit"></i>  <b>Edit</b></a>
+                            </div>
+                            <div class="col-lg-4">
+                                <a href="/vehicles/search/{{$customer->id}}" class="btn btn-primary btn-block"><i class="fa fa-automobile"></i>  <b> List Vehicles</b> <i class="fa fa-automobile"></i></a>
+                            </div>
+                            <div class="col-lg-4">
+                                <a href="/vehicles/add/{{$customer->id}}" class="btn btn-primary btn-block"><i class="fa fa-plus"></i> <b>  Add Vehicle</b>  <i class="fa fa-automobile"></i>  </a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+        </div>
+
+
+
 
 @endsection
