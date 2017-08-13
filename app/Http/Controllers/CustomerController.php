@@ -57,6 +57,11 @@ class CustomerController extends Controller
         return view('customers.addEnterpriseIndex');
     }
 
+    public function addSelectType()
+    {
+        return view('customers.addSelectType');
+    }
+
     public function add(Request $request)
     {
         $customer = parent::add($request);

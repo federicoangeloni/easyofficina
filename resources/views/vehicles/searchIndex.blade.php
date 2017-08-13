@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.main')
 
 @section('title','Search Vehicles')
 @section('header','Search Vehicles')
@@ -68,7 +68,7 @@
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-6">
                     <button type="submit" class="btn btn-default center-block">
-                        <i class="fa fa-plus"></i> Search
+                        <i class="fa fa-search"></i> Search
                     </button>
                 </div>
             </div>

@@ -19,11 +19,11 @@ use App\User;
 
 //--------------------------- GENERAL ROUTES ---------------------------------------
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard');
 });
 
 Route::get('/test', function () {
-    return view('dashboard');
+    return view('welcome');
 });
 
 //--------------------------- CUSTOMER ROUTES ---------------------------------------
@@ -34,6 +34,7 @@ Route::post('/customers/search', 'CustomerController@searchResult');
 //ADD CUSTOMER
 Route::get('/customers/addPrivate', 'CustomerController@addPrivateIndex');
 Route::get('/customers/addEnterprise', 'CustomerController@addEnterpriseIndex');
+Route::get('/customers/addSelectType', 'CustomerController@addSelectType');
 Route::post('/customers/add', 'CustomerController@add');
 
 //LIST ALL CUSTOMERS

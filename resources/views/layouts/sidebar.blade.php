@@ -1,4 +1,3 @@
-
 <!-- Left side column. contains the logo and sidebar -->
 <aside class="main-sidebar">
 
@@ -18,17 +17,25 @@
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
-            <li class="header">Actions</li>
+            <li class="header">Menu</li>
             <!-- Optionally, you can add icons to the links -->
-            <li class="active"><a href="#"><i class="fa fa-link"></i> <span>New Job</span></a></li>
-            <li><a href="#"><i class="fa fa-link"></i> <span>New Customer</span></a></li>
-            <li><a href="#"><i class="fa fa-link"></i> <span>Manage Jobs</span>
-
-            </span>
-                </a>
+            <li class="active"><a href="/"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
+            <li><a href="#"><i class="fa fa-users"></i> <span>Manage Customers</span></a>
                 <ul class="treeview-menu">
-                    <li><a href="#">Link in level 2</a></li>
-                    <li><a href="#">Link in level 2</a></li>
+                    <li><a href="/customers/addSelectType">Add a new customer</a></li>
+                    <li><a href="/customers/search">Search a customer</a></li>
+                </ul>
+            </li>
+            <li><a href="#"><i class="fa fa-car"></i> <span>Manage Vehicles</span></a>
+                <ul class="treeview-menu">
+                    <li><a href="/customers/search">Add a new vehicle</a></li>
+                    <li><a href="/vehicles/search">Search a vehicle</a></li>
+                </ul>
+            </li>
+            <li><a href="#"><i class="fa fa-wrench"></i> <span>Manage Jobs</span></a>
+                <ul class="treeview-menu">
+                    <li><a href="/customers/search">Start a new job</a></li>
+                    <li><a href="/jobs/search">Search a job</a></li>
                 </ul>
             </li>
         </ul>

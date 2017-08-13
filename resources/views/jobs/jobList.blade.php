@@ -33,7 +33,8 @@
                     <td><p for="amount" class="col-sm-3 control-label">{{$job->amount}}</p></td>
                     <td><p for="completed" class="col-sm-3 control-label">{{$job->completed}}</p></td>
                     <td>
-                        <a href="/jobs/{{$job->id}}"><input type="button" value="Show Details"/></a>
+                        <a href="/jobs/{{$job->id}}"><input type="button" class="btn btn-flat btn-primary"
+                                                            value="Show Details"/></a>
                     </td>
                 </tr>
 

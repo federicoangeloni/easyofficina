@@ -1,5 +1,4 @@
 @extends('layouts.main')
-{{--@extends('layouts.layout')--}}
 
 @section('title','List all Customers')
 @section('header','List all Customers')
@@ -46,7 +45,8 @@
                     {{--<td><p for="name" class="col-sm-3 control-label">{{$customer->fax}}</p></td>--}}
                     {{--<td><p for="name" class="col-sm-3 control-label">{{$customer->email}}</p></td>--}}
                     <td>
-                        <a href="/customers/{{$customer->id}}"><input type="button" value="Show Details"/></a>
+                        <a href="/customers/{{$customer->id}}"><input type="button" class="btn btn-flat btn-primary"
+                                                                      value="Show Details"/></a>
                     </td>
                 </tr>
             @endforeach

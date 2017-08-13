@@ -61,7 +61,7 @@ class VehicleController extends Controller
 
     public function add(Request $request)
     {
-        $request['matriculation']=Carbon::createFromFormat('d/m/Y',$request->input('matriculation'))->format('d/m/Y');
+        $request['matriculation'] = Carbon::createFromFormat('d/m/Y', $request->input('matriculation'))->format('d/m/Y');
         $vehicle = parent::add($request);
         return view('vehicles.vehicle')->with('vehicle', $vehicle);
     }

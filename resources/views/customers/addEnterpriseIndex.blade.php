@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.main')
 
 @section('title','Add a new Enterprise Customer')
 @section('header','Add a new Enterprise Customer')

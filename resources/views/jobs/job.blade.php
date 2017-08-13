@@ -5,36 +5,50 @@
 
 @section('content')
 
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+            <div class="box box-primary">
+                <div class="box-body box-profile">
 
+                    <h3 class="profile-username text-center">{{$job->vehicleid}}</h3> //ci va il modello del veicolo
 
-    <div class="panel-body">
-        <!-- Display Validation Errors -->
+                    <p class="text-muted text-center">Client Type</p> //ci va il nome del cliente
 
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                {{--<th>id</th>--}}
-                <th>Vehicle ID</th>
-                <th>Job Date</th>
-                <th>Description</th>
-                <th>Amount</th>
-                <th>Completed</th>
-            </tr>
-            </thead>
+                    <ul class="list-group list-group-unbordered">
+                        <li class="list-group-item">
+                            <b>Vehicle Id</b> <a class="pull-right">{{$job->vehicleid}}</a>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Job Date</b> <a class="pull-right">{{$job->jobdate}}</a>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Description</b> <a class="pull-right">{{$job->description}}</a>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Amount</b> <a class="pull-right">{{$job->amount}}</a>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Completed</b> <a class="pull-right">{{$job->completed}}</a>
+                        </li>
 
-            <tbody>
-            <tr>
-                {{--<td><p for="id" class="col-sm-3 control-label">{{$job->id}}</p></td>--}}
-                <td><p for="vehicleid" class="col-sm-3 control-label"><a
-                                href="/vehicles/{{$job->vehicleid}}">{{$job->vehicleid}}</a></p></td>
-                <td><p for="jobdate" class="col-sm-12 control-label">{{$job->jobdate}}</p></td>
-                <td><p for="description" class="col-sm-12 control-label">{{$job->description}}</p></td>
-                <td><p for="amount" class="col-sm-3 control-label">{{$job->amount}}</p></td>
-                <td><p for="completed" class="col-sm-3 control-label">{{$job->completed}}</p></td>
-            </tr>
-            </tbody>
-        </table>
+                    </ul>
 
+                    <div class="row">
+                        <div class="col-lg-4 col-lg-offset-2">
+                            <a href="#" class="btn btn-primary btn-block"><i class="fa fa-edit"></i> <b>Edit</b></a>
+                        </div>
+                        <div class="col-lg-4">
+                            <a href="/jobs/search/{{$job->id}}" class="btn btn-primary btn-block"><i
+                                        class="fa fa-trash"></i> <b> Delete</b></a>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
     </div>
 
 @endsection

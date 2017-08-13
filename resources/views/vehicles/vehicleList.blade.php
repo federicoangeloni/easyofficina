@@ -37,7 +37,8 @@
                     <td><p for="kilometers" class="col-sm-3 control-label">{{$vehicle->kilometers}}</p></td>
                     <td><p for="matriculation" class="col-sm-3 control-label">{{$vehicle->matriculation}}</p></td>
                     <td>
-                        <a href="/vehicles/{{$vehicle->id}}"><input type="button" value="Show Details"/></a>
+                        <a href="/vehicles/{{$vehicle->id}}"><input type="button" class="btn btn-flat btn-primary"
+                                                                    value="Show Details"/></a>
                     </td>
                 </tr>
 

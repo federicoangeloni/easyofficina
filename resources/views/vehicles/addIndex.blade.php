@@ -17,6 +17,7 @@
 
     <!-- Bootstrap Boilerplate... -->
     <link rel="stylesheet" href="{{asset("/bower_components/AdminLTE/plugins/datepicker/datepicker3.css")}}">
+
     <div class="panel-body">
         <!-- Display Validation Errors -->
         <!-- New Task Form -->

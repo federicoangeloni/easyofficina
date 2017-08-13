@@ -35,6 +35,16 @@ class JobController extends Controller
 
     }
 
+
+    public function searchResult(Request $filters)
+    {
+
+        $jobs = parent::searchResult($filters);
+        return view('jobs.jobList')->with('jobs', $jobs);
+
+    }
+
+
     public function searchByVehicleID($vehicleid)
     {
 
@@ -45,8 +55,8 @@ class JobController extends Controller
 
     public function addIndex($vehicleid)
     {
-        $actualDate=Carbon::now()->format('d M y  H:i:s');
-        return view('jobs.addIndex',compact('vehicleid','actualDate'));
+        $actualDate = Carbon::now()->format('d M y  H:i:s');
+        return view('jobs.addIndex', compact('vehicleid', 'actualDate'));
     }
 
     public function add(Request $request)
