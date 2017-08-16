@@ -68,5 +68,18 @@ class CustomerController extends Controller
         return view('customers.customer')->with('customer', $customer);
     }
 
+    public function autocomplete_name(Request $filters){
+
+        $autocomplete = parent::searchResult($filters);
+        return $autocomplete->pluck('name');
+
+    }
+
+    public function autocomplete_surname(Request $filters){
+
+        $autocomplete = parent::searchResult($filters);
+        return $autocomplete->pluck('surname');
+
+    }
 
 }

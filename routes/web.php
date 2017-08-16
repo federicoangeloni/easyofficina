@@ -30,6 +30,9 @@ Route::get('/test', function () {
 //SEARCH CUSTOMERS
 Route::get('/customers/search', 'CustomerController@searchIndex');
 Route::post('/customers/search', 'CustomerController@searchResult');
+Route::get('/customers/search/autocomplete_name', 'CustomerController@autocomplete_name');
+Route::get('/customers/search/autocomplete_surname', 'CustomerController@autocomplete_surname');
+
 
 //ADD CUSTOMER
 Route::get('/customers/addPrivate', 'CustomerController@addPrivateIndex');

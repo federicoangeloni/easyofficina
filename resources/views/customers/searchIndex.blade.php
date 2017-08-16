@@ -10,7 +10,7 @@
     <div class="panel-body">
         <!-- Display Validation Errors -->
 
-
+        <link rel="stylesheet" href="{{asset('css/customer/searchIndex.css')}}">
         <!-- New Task Form -->
         <form action="/customers/search" method="POST" class="form-horizontal">
         {{ csrf_field() }}
@@ -19,21 +19,21 @@
             <div class="form-group">
                 <label for="name" class="col-sm-3 control-label">Name</label>
                 <div class="col-sm-6">
-                    <input type="text" name="name" id="task-name" class="form-control" value="">
+                    <input type="text" name="name" id="name" class="form-control" value="">
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="surname" class="col-sm-3 control-label">Surname</label>
                 <div class="col-sm-6">
-                    <input type="text" name="surname" id="task-name" class="form-control" value="">
+                    <input type="text" name="surname" id="surname" class="form-control" value="">
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="nominative" class="col-sm-3 control-label">Nominative</label>
                 <div class="col-sm-6">
-                    <input type="text" name="nominative" id="task-name" class="form-control" value="">
+                    <input type="text" name="nominative" id="" class="form-control" value="">
                 </div>
             </div>
 
@@ -104,6 +104,10 @@
             </div>
         </form>
     </div>
+
+    <script src="{{asset('bower_components/AdminLTE/plugins/jQueryUI/jquery-ui.min.js')}}"></script>
+
+    <script src="{{asset('js/customer/searchIndex.js')}}"></script>
 
     <!-- TODO: Current Tasks -->
 @endsection
