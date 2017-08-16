@@ -65,4 +65,8 @@ class Controller extends BaseController
 
     }
 
+    public function delete($id){
+        $this->ActiveRepository->delete($id);
+    }
+
 }

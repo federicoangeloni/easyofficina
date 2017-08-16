@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Customer as Customer;
 use App\Repositories\CustomerRepository as CustomerRepository;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 
 
 class CustomerController extends Controller
@@ -43,7 +44,13 @@ class CustomerController extends Controller
     {
 
         $customers = parent::searchResult($filters);
-        return view('customers.customerList')->with('customers', $customers);
+        if (sizeof($customers)==1){
+
+            return redirect()->route('customer',['id'=>$customers[0]->id]);
+        }
+        else {
+            return view('customers.customerList')->with('customers', $customers);
+        }
 
     }
 
@@ -67,6 +74,9 @@ class CustomerController extends Controller
         $customer = parent::add($request);
         return view('customers.customer')->with('customer', $customer);
     }
+
+
+    //Autocomplete Functions for Search Page
 
     public function autocomplete_name(Request $filters){
 

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Customer as Customer;
 use App\Repositories\CustomerRepository as CustomerRepository;
 use App\Repositories\VehicleRepository as VehicleRepository;
 use App\Vehicle;
@@ -15,9 +14,11 @@ class VehicleController extends Controller
     /**
      * @var VehicleRepository
      */
+    private $customerRepository;
 
-    public function __construct(VehicleRepository $vehicleRepository, Vehicle $vehiclemodel)
+    public function __construct(VehicleRepository $vehicleRepository, Vehicle $vehiclemodel, CustomerRepository $customerRepository)
     {
+        $this->customerRepository = $customerRepository;
         $this->ActiveRepository = $vehicleRepository;
         $this->ActiveModel = $vehiclemodel;
     }
@@ -32,7 +33,10 @@ class VehicleController extends Controller
     public function getById($id)
     {
         $vehicle = parent::getById($id);
-        return view('vehicles.vehicle')->with('vehicle', $vehicle);
+        //Get Vehicles Customer Name From Database
+        $customer = $this->customerRepository->getById($vehicle->ownerid);
+        $vehicle->customer = $customer->name." ".$customer->surname;
+        return view('vehicles.vehicle')->with('vehicle',$vehicle);
     }
 
     public function searchIndex()
@@ -64,6 +68,13 @@ class VehicleController extends Controller
         $request['matriculation'] = Carbon::createFromFormat('d/m/Y', $request->input('matriculation'))->format('d/m/Y');
         $vehicle = parent::add($request);
         return view('vehicles.vehicle')->with('vehicle', $vehicle);
+    }
+
+    public function delete($id)
+    {
+        parent::delete($id);
+        return redirect()->route('vehiclelist');
+
     }
 
 

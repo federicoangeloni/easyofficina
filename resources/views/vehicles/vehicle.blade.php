@@ -15,7 +15,7 @@
 
                     <h3 class="profile-username text-center">{{$vehicle->model}}</h3>
 
-                    <p class="text-muted text-center">Client Type</p>
+                    <p class="text-muted text-center">{{$vehicle->customer}}</p>
 
                     <ul class="list-group list-group-unbordered">
                         <li class="list-group-item">
@@ -37,17 +37,23 @@
                     </ul>
 
                     <div class="row">
-                        <div class="col-lg-4">
+                        <div class="col-lg-3">
                             <a href="#" class="btn btn-primary btn-block"><i class="fa fa-edit"></i> <b>Edit</b></a>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-3">
                             <a href="/jobs/search/{{$vehicle->id}}" class="btn btn-primary btn-block"><i
                                         class="fa fa-list"></i> <b> List Jobs</b> <i class="fa fa-wrench"></i></a>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-3">
                             <a href="/jobs/add/{{$vehicle->id}}" class="btn btn-primary btn-block"><i
                                         class="fa fa-plus"></i> <b> Add Job</b> <i class="fa fa-wrench"></i> </a>
                         </div>
+                        <div class="col-lg-3">
+                            <a href="/vehicles/delete/{{$vehicle->id}}" class="btn btn-primary btn-block"><i
+                                        class="fa fa-plus"></i> <b> Delete Vehicle</b> <i class="fa fa-wrench"></i> </a>
+                        </div>
+
+
                     </div>
 
                 </div>

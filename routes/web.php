@@ -22,7 +22,7 @@ Route::get('/', function () {
     return view('dashboard');
 });
 
-Route::get('/test', function () {
+Route::get('test', function () {
     return view('welcome');
 });
 
@@ -42,7 +42,7 @@ Route::post('/customers/add', 'CustomerController@add');
 
 //LIST ALL CUSTOMERS
 Route::get('/customers', 'CustomerController@getall');
-Route::get('/customers/{id}', 'CustomerController@getById');
+Route::get('/customers/{id}', 'CustomerController@getById')->name('customer');
 
 //---------------------------- VEHICLES ROUTES --------------------------------------
 
@@ -56,8 +56,11 @@ Route::get('/vehicles/add/{ownerid}', 'VehicleController@addIndex');
 Route::post('/vehicles/add', 'VehicleController@add');
 
 //LIST ALL VEHICLES
-Route::get('/vehicles', 'VehicleController@getall');
+Route::get('/vehicles', 'VehicleController@getall')->name('vehiclelist');
 Route::get('/vehicles/{id}', 'VehicleController@getById');
+
+//DELETE VEHICLE
+ROUTE::get('/vehicles/delete/{id}','VehicleController@delete');
 
 //---------------------------- JOBS ROUTES --------------------------------------
 
@@ -71,6 +74,9 @@ Route::get('/jobs/add/{vehicleid}', 'JobController@addIndex');
 Route::post('/jobs/add', 'JobController@add');
 
 //LIST ALL JOBS
-Route::get('/jobs', 'JobController@getall');
+Route::get('/jobs', 'JobController@getall')->name('joblist');
 Route::get('/jobs/{id}', 'JobController@getById');
+
+//DELETE JOB
+ROUTE::get('/jobs/delete/{id}','JobController@delete');
 

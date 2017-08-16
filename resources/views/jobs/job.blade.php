@@ -11,13 +11,13 @@
             <div class="box box-primary">
                 <div class="box-body box-profile">
 
-                    <h3 class="profile-username text-center">{{$job->vehicleid}}</h3> //ci va il modello del veicolo
+                    <h3 class="profile-username text-center">{{$job->vehicle}}</h3>
 
-                    <p class="text-muted text-center">Client Type</p> //ci va il nome del cliente
+                    <p class="text-muted text-center">{{$job->customer}}</p>
 
                     <ul class="list-group list-group-unbordered">
                         <li class="list-group-item">
-                            <b>Vehicle Id</b> <a class="pull-right">{{$job->vehicleid}}</a>
+                            <b>Job Id</b> <a class="pull-right">{{$job->id}}</a>
                         </li>
                         <li class="list-group-item">
                             <b>Job Date</b> <a class="pull-right">{{$job->jobdate}}</a>
@@ -39,7 +39,7 @@
                             <a href="#" class="btn btn-primary btn-block"><i class="fa fa-edit"></i> <b>Edit</b></a>
                         </div>
                         <div class="col-lg-4">
-                            <a href="/jobs/search/{{$job->id}}" class="btn btn-primary btn-block"><i
+                            <a href="/jobs/delete/{{$job->id}}" class="btn btn-primary btn-block"><i
                                         class="fa fa-trash"></i> <b> Delete</b></a>
                         </div>
 
