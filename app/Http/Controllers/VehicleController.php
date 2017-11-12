@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Customer;
 use App\Repositories\CustomerRepository as CustomerRepository;
 use App\Repositories\VehicleRepository as VehicleRepository;
 use App\Vehicle;
@@ -35,7 +36,9 @@ class VehicleController extends Controller
         $vehicle = parent::getById($id);
         //Get Vehicles Customer Name From Database
         $customer = $this->customerRepository->getById($vehicle->ownerid);
+        //Add customer name to the vehicle object for the view
         $vehicle->customer = $customer->name." ".$customer->surname;
+
         return view('vehicles.vehicle')->with('vehicle',$vehicle);
     }
 

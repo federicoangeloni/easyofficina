@@ -23,6 +23,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   -->
     <link rel="stylesheet" href="{{asset("/bower_components/AdminLTE/dist/css/skins/skin-blue.min.css")}}">
 
+    <link rel="stylesheet" href="{{asset("/css/main.css")}}">
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -76,9 +78,9 @@ desired effect
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <h1> @yield('header')</h1>
+
             <small>{{ $page_description or null }}</small>
-            </h1>
+
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
                 <li class="active">Here</li>

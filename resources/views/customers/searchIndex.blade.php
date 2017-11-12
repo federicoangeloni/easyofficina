@@ -10,7 +10,7 @@
     <div class="panel-body">
         <!-- Display Validation Errors -->
 
-        <link rel="stylesheet" href="{{asset('css/customer/searchIndex.css')}}">
+        <link rel="stylesheet" href="{{asset('css/customers/searchIndex.css')}}">
         <!-- New Task Form -->
         <form action="/customers/search" method="POST" class="form-horizontal">
         {{ csrf_field() }}
@@ -107,7 +107,7 @@
 
     <script src="{{asset('bower_components/AdminLTE/plugins/jQueryUI/jquery-ui.min.js')}}"></script>
 
-    <script src="{{asset('js/customer/searchIndex.js')}}"></script>
+    <script src="{{asset('js/customers/searchIndex.js')}}"></script>
 
     <!-- TODO: Current Tasks -->
 @endsection

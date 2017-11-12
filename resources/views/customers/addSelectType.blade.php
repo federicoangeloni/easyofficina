@@ -5,7 +5,7 @@
 
 @section('content')
 
-    <link rel="stylesheet" href="{{asset("css/addCustomer.css")}}">
+    <link rel="stylesheet" href="{{asset("css/customers/addSelectType.css")}}">
 
 
     <div class="row">
@@ -43,6 +43,6 @@
 
     </div>
 
-    <script src="{{asset("js/addCustomer.js")}}"></script>
+    <script src="{{asset("js/customers/addSelectType.js")}}"></script>
 
 @endsection

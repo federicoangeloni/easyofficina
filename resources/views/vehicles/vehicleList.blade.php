@@ -27,15 +27,15 @@
             @foreach($vehicles as $vehicle)
 
                 <tr>
-                    <td><p for="id" class="col-sm-3 control-label">{{$vehicle->id}}</p></td>
-                    <td><p for="ownerid" class="col-sm-3 control-label"><a
+                    <td><p for="id" class="col-sm-1 col-lg-12 control-label">{{$vehicle->id}}</p></td>
+                    <td><p for="ownerid" class="col-sm-1 col-lg-12 control-label"><a
                                     href="/customers/{{$vehicle->ownerid}}">{{$vehicle->ownerid}}</a></p></td>
-                    <td><p for="model" class="col-sm-3 control-label">{{$vehicle->model}}</p></td>
-                    <td><p for="plate" class="col-sm-3 control-label">{{$vehicle->plate}}</p></td>
-                    <td><p for="chassis" class="col-sm-3 control-label">{{$vehicle->chassis}}</p></td>
-                    <td><p for="enginecode" class="col-sm-3 control-label">{{$vehicle->enginecode}}</p></td>
-                    <td><p for="kilometers" class="col-sm-3 control-label">{{$vehicle->kilometers}}</p></td>
-                    <td><p for="matriculation" class="col-sm-3 control-label">{{$vehicle->matriculation}}</p></td>
+                    <td><p for="model" class="col-sm-3 col-lg-12 control-label">{{$vehicle->model}}</p></td>
+                    <td><p for="plate" class="col-sm-2 col-lg-12 control-label">{{$vehicle->plate}}</p></td>
+                    <td><p for="chassis" class="col-sm-1 col-lg-12 control-label">{{$vehicle->chassis}}</p></td>
+                    <td><p for="enginecode" class="col-sm-1 col-lg-12 control-label">{{$vehicle->enginecode}}</p></td>
+                    <td><p for="kilometers" class="col-sm-2 col-lg-12 control-label">{{$vehicle->kilometers}}</p></td>
+                    <td><p for="matriculation" class="col-sm-1 col-lg-12 control-label">{{$vehicle->matriculation}}</p></td>
                     <td>
                         <a href="/vehicles/{{$vehicle->id}}"><input type="button" class="btn btn-flat btn-primary"
                                                                     value="Show Details"/></a>

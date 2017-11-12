@@ -34,10 +34,14 @@ class JobController extends Controller
     {
         $job = parent::getById($id);
 
+        //Get The Jobs Vehicle Name From Database
         $vehicle = $this->vehicleRepository->getById($job->vehicleid);
+        //Add Vehicle Name to Job object for View
         $job->vehicle=$vehicle->model;
 
+        //Get The Jobs Customer Name From Database
         $customer = $this->customerRepository->getById($vehicle->ownerid);
+        //Add Customer Name to Job object for View
         $job->customer = $customer->name." ".$customer->surname;
 
         return view('jobs.job')->with('job', $job);

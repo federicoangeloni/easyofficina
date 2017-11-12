@@ -93,6 +93,6 @@
     </div>
 
     <script src="{{asset("/bower_components/AdminLTE/plugins/datepicker/bootstrap-datepicker.js")}}"></script>
-    <script src="{{asset("/js/add_vehicle.js")}}"></script>
+    <script src="{{asset("/js/vehicles/addIndex.js")}}"></script>
     <!-- TODO: Current Tasks -->
 @endsection

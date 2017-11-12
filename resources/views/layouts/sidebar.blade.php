@@ -19,7 +19,7 @@
         <ul class="sidebar-menu">
             <li class="header">Menu</li>
             <!-- Optionally, you can add icons to the links -->
-            <li class="active"><a href="/"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
+            <li class=""><a href="/"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
             <li><a href="#"><i class="fa fa-users"></i> <span>Manage Customers</span></a>
                 <ul class="treeview-menu">
                     <li><a href="/customers/addSelectType">Add a new customer</a></li>

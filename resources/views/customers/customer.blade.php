@@ -7,7 +7,7 @@
 
 
 
-    <link rel="stylesheet" href="{{asset("css/customer.css")}}">
+    <link rel="stylesheet" href="{{asset("css/customers/customer.css")}}">
     <!-- Display Validation Errors -->
 
     <div class="row">

@@ -32,15 +32,15 @@
             @foreach($customers as $customer)
                 <tr>
                     {{--<td><p for="name" class="col-sm-3 control-label">{{$customer->id}}</p></td>--}}
-                    <td><p for="name" class="col-sm-3 control-label">{{$customer->name}}</p></td>
-                    <td><p for="name" class="col-sm-3 control-label">{{$customer->surname}}</p></td>
-                    <td><p for="name" class="col-sm-3 control-label">{{$customer->nominative}}</p></td>
-                    <td><p for="name" class="col-sm-12 control-label">{{$customer->address}}</p></td>
+                    <td><p for="name" class="col-sm-3 col-lg-12 control-label">{{$customer->name}}</p></td>
+                    <td><p for="name" class="col-sm-3 col-lg-12 control-label">{{$customer->surname}}</p></td>
+                    <td><p for="name" class="col-sm-3 col-lg-12 control-label">{{$customer->nominative}}</p></td>
+                    <td><p for="name" class="col-sm-3 col-lg-12 control-label">{{$customer->address}}</p></td>
                     {{--<td><p for="name" class="col-sm-3 control-label">{{$customer->zipcode}}</p></td>--}}
                     {{--<td><p for="name" class="col-sm-3 control-label">{{$customer->city}}</p></td>--}}
 
-                    <td><p for="name" class="col-sm-3 control-label">{{$customer->vat_number}}</p></td>
-                    <td><p for="name" class="col-sm-3 control-label">{{$customer->ssn}}</p></td>
+                    <td><p for="name" class="col-sm-3 col-lg-12 control-label">{{$customer->vat_number}}</p></td>
+                    <td><p for="name" class="col-sm-3 col-lg-12 control-label">{{$customer->ssn}}</p></td>
                     {{--<td><p for="name" class="col-sm-3 control-label">{{$customer->telephone}}</p></td>--}}
                     {{--<td><p for="name" class="col-sm-3 control-label">{{$customer->fax}}</p></td>--}}
                     {{--<td><p for="name" class="col-sm-3 control-label">{{$customer->email}}</p></td>--}}
