@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Customer as Customer;
 use App\Repositories\CustomerRepository as CustomerRepository;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 
 
 class CustomerController extends Controller
@@ -43,8 +44,6 @@ class CustomerController extends Controller
     {
 
         $customers = parent::searchResult($filters);
-
-        //If only one search result then open directly the customers TAB
         if (sizeof($customers)==1){
 
             return redirect()->route('customer',['id'=>$customers[0]->id]);
@@ -81,15 +80,15 @@ class CustomerController extends Controller
 
     public function autocomplete_name(Request $filters){
 
-        $autocomplete = parent::searchResult($filters);
-        return $autocomplete->pluck('name')->unique();;
+            $autocomplete = parent::searchResult($filters);
+            return $autocomplete->pluck('name');
 
     }
 
     public function autocomplete_surname(Request $filters){
 
         $autocomplete = parent::searchResult($filters);
-        return $autocomplete->pluck('surname')->unique();
+        return $autocomplete->pluck('surname');
 
     }
 
