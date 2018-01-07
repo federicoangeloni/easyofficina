@@ -6,15 +6,27 @@
  * Time: 5:34 PM
  */
 
-class SparePartUsageFactory
+class SparePartUsageFactory extends OperationFactory
 {
     /*@Override*/
-    public function getServiceFactoryUsage(){
+    public function getServiceUsage($ServiceType,$Quantity){
         return null;
     }
 
     /*@Override*/
-    public function getSparePartFactoryUsage(){
+    public function getSparePartUsage($SparePartOrigin,$Quantity,$SparePartId){
+
+        if($SparePartOrigin == null){
+            return null;
+        }
+
+        if(strcasecmp("WAREHOUSE",$SparePartOrigin)){
+            return new WarehousePartUsage($Quantity,$SparePartId);
+
+        }
+
+        return null;
 
     }
+
 }

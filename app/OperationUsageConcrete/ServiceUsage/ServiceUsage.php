@@ -11,4 +11,5 @@ interface ServiceUsage
 public function getunitprice();
 public function getprice();
 public function getunit();
+public function getOperation();
 }

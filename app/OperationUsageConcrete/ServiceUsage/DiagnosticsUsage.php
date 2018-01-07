@@ -14,6 +14,7 @@ private $unit="hour";
 
     public function __construct($quantity){
         $this->quantity=$quantity;
+        return $this->getoperation();
     }
 
     public function getunitprice()
@@ -32,5 +33,19 @@ private $unit="hour";
     {
         // TODO: Implement getunit() method.
         return $this->unit;
+    }
+
+    public function getOperation()
+    {
+        $Operation = new \App\Operation(['name' => 'Diagnostics','description'=>'',]);
+        $Operation->name='Diagnostics';
+        $Operation->description='Diagnostics Description';
+        $Operation->quantity=$this->quantity;
+        $Operation->unit=$this->getunit();
+        $Operation->unitprice=$this->getunitprice();
+        $Operation->totalprice=$this->getprice();
+        return $Operation;
+        // TODO: Implement getoperation() method.
+
     }
 }

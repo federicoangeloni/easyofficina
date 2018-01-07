@@ -10,7 +10,7 @@ class ServiceUsageFactory extends OperationFactory
 {
 
     /*@Override*/
-    public function getServiceUsageFactory($ServiceType,$Quantity){
+    public function getServiceUsage($ServiceType,$Quantity){
 
         if($ServiceType == null){
             return null;
@@ -31,7 +31,7 @@ class ServiceUsageFactory extends OperationFactory
     }
 
     /*@Override*/
-    public function getSparePartUsageFactory($SparePartOrigin,$Quantity){
+    public function getSparePartUsage($SparePartOrigin,$Quantity,$SparePartId){
         return null;
     }
 

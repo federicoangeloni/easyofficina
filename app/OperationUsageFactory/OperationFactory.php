@@ -8,6 +8,6 @@
 
 abstract class OperationFactory
 {
-    abstract function getServiceUsageFactory($ServiceType,$Quantity);
-    abstract function getSparePartUsageFactory($SparePartOrigin,$Quantity);
+    abstract function getServiceUsage($ServiceType,$Quantity);
+    abstract function getSparePartUsage($SparePartOrigin,$Quantity,$SparePartId);
 }

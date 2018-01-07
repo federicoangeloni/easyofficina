@@ -33,4 +33,7 @@ private $unit="pz";
         // TODO: Implement getunit() method.
         return $this->unit;
     }
+
+    //MAY HAVE SOME SORT OF DISCOUNT POLICY ANOTHER FUNCTION
+
 }
