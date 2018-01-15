@@ -6,6 +6,8 @@
  * Time: 5:52 PM
  */
 
+namespace App\OperationUsageConcrete;
+
 class TireChangeUsage implements ServiceUsage
 {
 

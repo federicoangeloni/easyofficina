@@ -80,3 +80,15 @@ Route::get('/jobs/{id}', 'JobController@getById');
 //DELETE JOB
 ROUTE::get('/jobs/delete/{id}','JobController@delete');
 
+
+//---------------------------- SPAREPART ROUTES --------------------------------------
+
+//LIST ALL
+Route::get('/spareparts', 'SparePartController@getall');
+Route::get('/spareparts/{id}', 'SparePartController@getById')->name('spareparts');
+
+//---------------------------- ELABORAINTERVENTO ROUTES --------------------------------------
+
+Route::get('/operations/OperationSelect/{jobid}', 'ElaboraInterventoController@newOperationIndex');
+Route::get('/operations/SparePartIndex/{jobid}', 'ElaboraInterventoController@listSpareParts');
+Route::get('/operations/AddSparePart/{jobid}/{warehouseid},{quantity},{sparepartid}', 'ElaboraInterventoController@newSparePartUsage');

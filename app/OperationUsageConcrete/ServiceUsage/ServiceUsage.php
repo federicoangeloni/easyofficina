@@ -6,6 +6,8 @@
  * Time: 5:44 PM
  */
 
+namespace App\OperationUsageConcrete;
+
 interface ServiceUsage
 {
 public function getunitprice();

@@ -6,6 +6,9 @@
  * Time: 5:34 PM
  */
 
+namespace App\OperationUsageFactory;
+use App\OperationUsageConcrete\SparePartUsage\WarehousePartUsage;
+
 class SparePartUsageFactory extends OperationFactory
 {
     /*@Override*/
@@ -14,14 +17,15 @@ class SparePartUsageFactory extends OperationFactory
     }
 
     /*@Override*/
-    public function getSparePartUsage($SparePartOrigin,$Quantity,$SparePartId){
+    public function getSparePartUsage($Warehouseid,$Quantity,$SparePartId,$jobid){
 
-        if($SparePartOrigin == null){
-            return null;
-        }
 
-        if(strcasecmp("WAREHOUSE",$SparePartOrigin)){
-            return new WarehousePartUsage($Quantity,$SparePartId);
+        if($Warehouseid==1){
+
+
+
+            return new WarehousePartUsage($Quantity,$SparePartId,$jobid);
+
 
         }
 

@@ -6,8 +6,10 @@
  * Time: 4:47 PM
  */
 
+namespace App\OperationUsageFactory;
+
 abstract class OperationFactory
 {
     abstract function getServiceUsage($ServiceType,$Quantity);
-    abstract function getSparePartUsage($SparePartOrigin,$Quantity,$SparePartId);
+    abstract function getSparePartUsage($SparePartOrigin,$Quantity,$SparePartId,$jobid);
 }

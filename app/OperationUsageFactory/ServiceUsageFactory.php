@@ -6,6 +6,9 @@
  * Time: 4:50 PM
  */
 
+namespace App\OperationUsageFactory;
+use App\OperationUsageConcrete\DiagnosticsUsage;
+
 class ServiceUsageFactory extends OperationFactory
 {
 

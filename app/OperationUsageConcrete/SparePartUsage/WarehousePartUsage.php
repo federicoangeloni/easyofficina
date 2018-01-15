@@ -6,22 +6,35 @@
  * Time: 5:52 PM
  */
 
-class WarehousePartUsage implements ServiceUsage
+namespace App\OperationUsageConcrete\SparePartUsage;
+
+use App\Providers\AppServiceProvider;
+use App\Repositories\SparePartRepository As SparePartRepository;
+use Illuminate\Container\Container as App;
+
+class WarehousePartUsage implements SparePartUsage
 {
 
 public $quantity;
+public $jobid;
 private $spid;
 private $unit="pz";
 
-    public function __construct($quantity,$sparepartid){
+
+public function __construct($quantity,$sparepartid,$jobid){
+
+        $this->jobid=$jobid;
         $this->quantity=$quantity;
         $this->spid=$sparepartid;
     }
 
     public function getunitprice()
     {
-        // TODO: Implement getunitprice() method. //ACCESS DATABASE FOR PRICE
-        return 300;
+        $app=App::getInstance();
+        $sparepartrepo=new SparePartRepository($app);
+        $sparepart= $sparepartrepo->getById($this->spid);
+        return $sparepart->catalog['unitprice'];
+
     }
 
     public function getprice()
@@ -34,5 +47,21 @@ private $unit="pz";
     {
         // TODO: Implement getunit() method.
         return $this->unit;
+    }
+
+    public function addOperation()
+    {
+        $Operation = new \App\Operation(['name' => 'Diagnostics','description'=>'',]);
+        $Operation->jobid=$this->jobid;
+        $Operation->name='SparePart Usage';
+        $Operation->description='Usage Of Spare Part From Warehouse 1';
+        $Operation->quantity=$this->quantity;
+        $Operation->unit=$this->getunit();
+        $Operation->unitprice=$this->getunitprice();
+        $Operation->totalprice=$this->getprice();
+        $Operation->save();
+        return $Operation;
+        // TODO: Implement getoperation() method.
+
     }
 }
