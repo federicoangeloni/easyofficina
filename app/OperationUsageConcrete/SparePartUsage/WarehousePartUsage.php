@@ -6,33 +6,62 @@
  * Time: 5:52 PM
  */
 
-class WarehousePartUsage implements ServiceUsage
+namespace App\OperationUsageConcrete\SparePartUsage;
+
+use App\Providers\AppServiceProvider;
+use App\Repositories\SparePartRepository As SparePartRepository;
+use Illuminate\Container\Container as App;
+
+class WarehousePartUsage implements SparePartUsage
 {
 
-public $quantity;
-private $spid;
+private $quantity;
+private $jobid;
 private $unit="pz";
+private $unitprice;
+private $name;
+private $description;
+private $warehousename;
 
-    public function __construct($quantity,$sparepartid){
+
+public function __construct($quantity,$sparepartid,$jobid){
+
+        $app=App::getInstance();
+        $sparepartrepo=new SparePartRepository($app);
+
+        $sparepart= $sparepartrepo->getById($sparepartid);
+
+
+        $this->name=$sparepart->catalog['name'];
+        $this->description=$sparepart->catalog['description'];
+        $this->unitprice=$sparepart->catalog['unitprice'];
+
+        $this->warehousename=$sparepart->warehouse['name'];
+        $this->jobid=$jobid;
         $this->quantity=$quantity;
-        $this->spid=$sparepartid;
-    }
-
-    public function getunitprice()
-    {
-        // TODO: Implement getunitprice() method. //ACCESS DATABASE FOR PRICE
-        return 300;
     }
 
     public function getprice()
     {
         // TODO: Implement getprice() method.
-        return ($this->getunitprice()*$this->quantity);
+        return ($this->unitprice*$this->quantity);
     }
 
-    public function getunit()
+
+    public function addOperation()
     {
-        // TODO: Implement getunit() method.
-        return $this->unit;
+        $app=App::getInstance();
+        $Operation = new \App\Operation();
+        $Operation->jobid=$this->jobid;
+        $Operation->name=$this->name;
+        $Operation->description=$this->description." "."From"." ".$this->warehousename;
+        $Operation->quantity=$this->quantity;
+        $Operation->unit=$this->unit;
+        $Operation->unitprice=$this->unitprice;
+        $Operation->totalprice=$this->getprice();
+        $Operation->save();
+        return $Operation;
+        // TODO: Implement getoperation() method.
+
     }
 }

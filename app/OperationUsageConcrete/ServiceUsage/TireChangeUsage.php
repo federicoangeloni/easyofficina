@@ -6,6 +6,8 @@
  * Time: 5:52 PM
  */
 
+namespace App\OperationUsageConcrete\ServiceUsage;
+
 class TireChangeUsage implements ServiceUsage
 {
 
@@ -34,6 +36,22 @@ private $unit="pz";
         return $this->unit;
     }
 
-    //MAY HAVE SOME SORT OF DISCOUNT POLICY ANOTHER FUNCTION
+
+    public function addOperation($jobid)
+    {
+        $Operation = new \App\Operation(['name' => 'Diagnostics', 'description' => '',]);
+        $Operation->jobid = $jobid;
+        $Operation->name = 'TireChange Service';
+        $Operation->description = 'TireChange Description';
+        $Operation->quantity = $this->quantity;
+        $Operation->unit = $this->getunit();
+        $Operation->unitprice = $this->getunitprice();
+        $Operation->totalprice = $this->getprice();
+        $Operation->save();
+        return $Operation;
+    }
+        // TODO: Implement getoperation() method.
+
+        //MAY HAVE SOME SORT OF DISCOUNT POLICY ANOTHER FUNCTION
 
 }

@@ -8,7 +8,7 @@
 
 namespace App\Repositories;
 
-use App\Customer;
+
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Container\Container as App;
 

@@ -6,6 +6,11 @@
  * Time: 4:50 PM
  */
 
+namespace App\OperationUsageFactory;
+use App\OperationUsageConcrete\ServiceUsage\DiagnosticsUsage As DiagnosticsUsage;
+use App\OperationUsageConcrete\ServiceUsage\TowTruckUsage;
+use App\OperationUsageConcrete\ServiceUsage\TireChangeUsage;
+
 class ServiceUsageFactory extends OperationFactory
 {
 
@@ -16,14 +21,14 @@ class ServiceUsageFactory extends OperationFactory
             return null;
         }
 
-        if(strcasecmp("DIAG",$ServiceType)){
+        if(strcasecmp("DIAG", $ServiceType)==0){
             return new DiagnosticsUsage($Quantity);
 
-        }else if(strcasecmp("TOW",$ServiceType)){
-            return new TowTruckUsage($Quantity);
-
-        }else if(strcasecmp("TIRE",$ServiceType)){
+        }else if(strcasecmp("TIRE", $ServiceType)==0){
             return new TireChangeUsage($Quantity);
+
+        }else if(strcasecmp("TOW", $ServiceType)==0){
+            return new TowTruckUsage($Quantity);
         }
 
         return null;
@@ -31,7 +36,7 @@ class ServiceUsageFactory extends OperationFactory
     }
 
     /*@Override*/
-    public function getSparePartUsage($SparePartOrigin,$Quantity,$SparePartId){
+    public function getSparePartUsage($SparePartOrigin,$Quantity,$SparePartId,$jobid){
         return null;
     }
 
