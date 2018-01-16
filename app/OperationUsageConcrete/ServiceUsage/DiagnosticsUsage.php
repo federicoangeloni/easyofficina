@@ -6,46 +6,52 @@
  * Time: 5:52 PM
  */
 
-namespace App\OperationUsageConcrete;
+namespace App\OperationUsageConcrete\ServiceUsage;
 
+use App\Repositories\ServiceRepository;
+use Illuminate\Container\Container as App;
 class DiagnosticsUsage implements ServiceUsage
 {
 
 public $quantity;
+private $name;
+private $descrition;
 private $unit="hour";
+private $unitprice;
 
     public function __construct($quantity){
+
+        $app=App::getInstance();
+        $servicerepo=new ServiceRepository($app);
+        $service=$servicerepo->getDiagnosticService();
+
+        $this->unit=$service->unit;
+        $this->unitprice=$service->unitprice;
+        $this->descrition=$service->description;
+        $this->name=$service->name;
         $this->quantity=$quantity;
-        return $this->getoperation();
     }
 
-    public function getunitprice()
-    {
-        // TODO: Implement getunitprice() method.
-        return 300;
-    }
 
     public function getprice()
     {
         // TODO: Implement getprice() method.
-        return ($this->getunitprice()*$this->quantity);
+        return ($this->unitprice*$this->quantity);
     }
 
-    public function getunit()
-    {
-        // TODO: Implement getunit() method.
-        return $this->unit;
-    }
 
-    public function getOperation()
+    public function addOperation($jobid)
     {
+
         $Operation = new \App\Operation(['name' => 'Diagnostics','description'=>'',]);
-        $Operation->name='Diagnostics';
-        $Operation->description='Diagnostics Description';
+        $Operation->jobid=$jobid;
+        $Operation->name=$this->name;
+        $Operation->description=$this->descrition;
         $Operation->quantity=$this->quantity;
-        $Operation->unit=$this->getunit();
-        $Operation->unitprice=$this->getunitprice();
+        $Operation->unit=$this->unit;
+        $Operation->unitprice=$this->unitprice;
         $Operation->totalprice=$this->getprice();
+        $Operation->save();
         return $Operation;
         // TODO: Implement getoperation() method.
 

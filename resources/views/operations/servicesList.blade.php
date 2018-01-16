@@ -14,30 +14,31 @@
             <thead>
             <tr>
                 {{--<th>id</th>--}}
-                <th>SparePart Name</th>
-                <th>WareHouse Name</th>
-                <th>Quantity</th>
+                <th>Service Name</th>
+                <th>Service Description</th>
+                <th>Unit</th>
                 <th>Price</th>
+                <th>Quantity</th>
 
             </tr>
             </thead>
             <tbody>
-            @foreach($spareparts as $sparepart)
 
 
-                <form action="/operations/AddSparePart" method="POST" class="form-horizontal">
+            @foreach($services as $service)
+
+                <form action="/operations/AddService" method="POST" class="form-horizontal">
 
                     {{ csrf_field() }}
                     <input type="hidden" name="jobid" id="task-name" class="form-control" value="{{$jobid}}">
-                    <input type="hidden" name="warehouseid" id="task-name" class="form-control" value="{{$sparepart->warehouseid}}">
-                    <input type="hidden" name="sparepartid" id="task-name" class="form-control" value="{{$sparepart->id}}">
+                    <input type="hidden" name="serviceid" id="task-name" class="form-control" value="{{$service->id}}">
+                    <input type="hidden" name="servicecode" id="task-name" class="form-control" value="{{$service->code}}">
                 <tr>
                     {{--<td><p for="id" class="col-sm-3 control-label">{{$job->id}}</p></td>--}}
-                    <td><p for="name" class="col-sm-3 col-lg-12 control-label">{{$sparepart->catalog['name']}}</p></td>
-                    <td><p for="warehouse" class="col-sm-3 col-lg-12 control-label">{{$sparepart->warehouse['name']}}</p></td>
-                    <td><p for="quantity" class="col-sm-3 col-lg-12 control-label">{{$sparepart->quantity}}</p></td>
-                    <td><p for="price" class="col-sm-3 col-lg-12 control-label">{{$sparepart->catalog['unitprice']}}</p></td>
-
+                    <td><p for="name" class="col-sm-3 col-lg-12 control-label">{{$service->name}}</p></td>
+                    <td><p for="description" class="col-sm-3 col-lg-12 control-label">{{$service->description}}</p></td>
+                    <td><p for="unit" class="col-sm-3 col-lg-12 control-label">{{$service->unit}}</p></td>
+                    <td><p for="unitprice" class="col-sm-3 col-lg-12 control-label">{{$service->unitprice}}</p></td>
 
                     <td>
                         <input type="number" name="quantity" id="task-name" class="col-sm-3 col-lg-3" value="1">
@@ -52,9 +53,7 @@
                             </div>
                         </div>
                     </td>
-
                 </tr>
-
                 </form>
 
             @endforeach

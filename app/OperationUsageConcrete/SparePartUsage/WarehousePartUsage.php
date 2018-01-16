@@ -15,49 +15,49 @@ use Illuminate\Container\Container as App;
 class WarehousePartUsage implements SparePartUsage
 {
 
-public $quantity;
-public $jobid;
-private $spid;
+private $quantity;
+private $jobid;
 private $unit="pz";
+private $unitprice;
+private $name;
+private $description;
+private $warehousename;
 
 
 public function __construct($quantity,$sparepartid,$jobid){
 
-        $this->jobid=$jobid;
-        $this->quantity=$quantity;
-        $this->spid=$sparepartid;
-    }
-
-    public function getunitprice()
-    {
         $app=App::getInstance();
         $sparepartrepo=new SparePartRepository($app);
-        $sparepart= $sparepartrepo->getById($this->spid);
-        return $sparepart->catalog['unitprice'];
 
+        $sparepart= $sparepartrepo->getById($sparepartid);
+
+
+        $this->name=$sparepart->catalog['name'];
+        $this->description=$sparepart->catalog['description'];
+        $this->unitprice=$sparepart->catalog['unitprice'];
+
+        $this->warehousename=$sparepart->warehouse['name'];
+        $this->jobid=$jobid;
+        $this->quantity=$quantity;
     }
 
     public function getprice()
     {
         // TODO: Implement getprice() method.
-        return ($this->getunitprice()*$this->quantity);
+        return ($this->unitprice*$this->quantity);
     }
 
-    public function getunit()
-    {
-        // TODO: Implement getunit() method.
-        return $this->unit;
-    }
 
     public function addOperation()
     {
-        $Operation = new \App\Operation(['name' => 'Diagnostics','description'=>'',]);
+        $app=App::getInstance();
+        $Operation = new \App\Operation();
         $Operation->jobid=$this->jobid;
-        $Operation->name='SparePart Usage';
-        $Operation->description='Usage Of Spare Part From Warehouse 1';
+        $Operation->name=$this->name;
+        $Operation->description=$this->description." "."From"." ".$this->warehousename;
         $Operation->quantity=$this->quantity;
-        $Operation->unit=$this->getunit();
-        $Operation->unitprice=$this->getunitprice();
+        $Operation->unit=$this->unit;
+        $Operation->unitprice=$this->unitprice;
         $Operation->totalprice=$this->getprice();
         $Operation->save();
         return $Operation;

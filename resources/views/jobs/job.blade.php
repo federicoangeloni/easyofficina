@@ -35,12 +35,15 @@
                     </ul>
 
                     <div class="row">
-                        <div class="col-lg-4 col-lg-offset-2">
+                        <div class="col-lg-3 col-lg-offset-1">
                             <a href="#" class="btn btn-primary btn-block"><i class="fa fa-edit"></i> <b>Edit</b></a>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-3">
                             <a href="/jobs/delete/{{$job->id}}" class="btn btn-primary btn-block"><i
                                         class="fa fa-trash"></i> <b> Delete</b></a>
+                        </div>
+                        <div class="col-lg-3">
+                            <a href="/jobs/{{$job->id}}/operations" class="btn btn-primary btn-block"><i class="fa fa-edit"></i> <b>Operations</b></a>
                         </div>
 
                     </div>

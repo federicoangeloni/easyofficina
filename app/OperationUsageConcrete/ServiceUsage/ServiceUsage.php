@@ -6,12 +6,12 @@
  * Time: 5:44 PM
  */
 
-namespace App\OperationUsageConcrete;
+namespace App\OperationUsageConcrete\ServiceUsage;
+
 
 interface ServiceUsage
 {
-public function getunitprice();
+
 public function getprice();
-public function getunit();
-public function getOperation();
+public function addOperation($jobid);
 }

@@ -19,9 +19,7 @@ class SparePartUsageFactory extends OperationFactory
     /*@Override*/
     public function getSparePartUsage($Warehouseid,$Quantity,$SparePartId,$jobid){
 
-
         if($Warehouseid==1){
-
 
 
             return new WarehousePartUsage($Quantity,$SparePartId,$jobid);

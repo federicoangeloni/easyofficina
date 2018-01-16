@@ -33,6 +33,7 @@ class SparePartRepository extends Repository
     }
 
     public function getById($id){
+
         return $this->model->with(['catalog','warehouse'])->find($id);
     }
 
