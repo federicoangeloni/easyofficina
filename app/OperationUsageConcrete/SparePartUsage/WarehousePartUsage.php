@@ -64,4 +64,9 @@ public function __construct($quantity,$sparepartid,$jobid){
         // TODO: Implement getoperation() method.
 
     }
+
+    public function notify()
+    {
+
+    }
 }
