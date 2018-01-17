@@ -11,7 +11,7 @@ class Service extends Model
     public $fillable = ['name', 'description', 'unit', 'unitprice'];
 
     public static $rules = array(
-        'nome' => 'required',
+        'name' => 'required',
         'description' => 'required',
         'unit' => 'required',
         'unitprice' => 'required'

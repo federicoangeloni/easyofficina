@@ -13,8 +13,6 @@ class ElaboraInterventoController extends Controller
 {
 
 
-
-
     public function newOperationIndex($jobid){
         return view('operations.addIndex')->with('jobid',$jobid);
     }
@@ -60,7 +58,6 @@ class ElaboraInterventoController extends Controller
         //GET SERVICE AND ADD TO THE OPERATION JOB LIST
 
         $Operation=$SparePart->addOperation();
-
 
         return $this->listOperations($jobid);
 

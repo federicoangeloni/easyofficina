@@ -8,7 +8,12 @@ class Warehouse extends Model
 {
     public $timestamps = false;
     protected $table = 'warehouses';
-    protected $primaryKey = 'id';
 
-    public $fillable = ['description','name'];
+    public $fillable = ['name', 'description', 'address'];
+
+    public static $rules = array(
+        'name' => 'required',
+        'address' => 'nullable',
+        'description' => 'nullable'
+    );
 }

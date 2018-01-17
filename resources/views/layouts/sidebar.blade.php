@@ -38,6 +38,30 @@
                     <li><a href="/jobs/search">Search a job</a></li>
                 </ul>
             </li>
+            <hr>
+            <li><a href="#"><i class="fa fa-wrench"></i> <span>Manage Warehouse</span></a>
+                <ul class="treeview-menu">
+                    <li><a href="/warehouses/search">Search a Warehouse</a></li>
+                    <li><a href="/warehouses/add">Add a new warehouse</a></li>
+                </ul>
+            </li>
+            <li><a href="#"><i class="fa fa-wrench"></i> <span>Manage General Catalog</span></a>
+                <ul class="treeview-menu">
+                    <li><a href="/catalog/search">Search parts in the Catalog</a></li>
+                </ul>
+            </li>
+            <li><a href="#"><i class="fa fa-wrench"></i> <span>Manage Spare Parts</span></a>
+                <ul class="treeview-menu">
+                    <li><a href="/spareparts/search">Search a Spare Part</a></li>
+                    <li><a href="/spareparts/add">Add a Spare Part to a Warehouse</a></li>
+                </ul>
+            </li>
+            <hr>
+            <li><a href="#"><i class="fa fa-wrench"></i> <span>Manage Services</span></a>
+                <ul class="treeview-menu">
+                    <li><a href="/services/search">Search a Service</a></li>
+                </ul>
+            </li>
         </ul>
         <!-- /.sidebar-menu -->
     </section>

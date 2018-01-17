@@ -8,7 +8,13 @@ class Catalog extends Model
 {
     public $timestamps = false;
     protected $table = 'catalog';
-    protected $primaryKey = 'partid';
 
-    public $fillable = ['unitprice','name','description'];
+    public $fillable = ['partid', 'name','description','unitprice'];
+
+    public static $rules = array(
+        'partid' => 'required',
+        'name' => 'required',
+        'description' => 'nullable',
+        'unitprice' => 'required'
+    );
 }

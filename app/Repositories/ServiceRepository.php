@@ -34,7 +34,7 @@ class ServiceRepository extends Repository
         $Service->Code="DIAG";
         $Service->name="Diagnostics Service";
         $Service->description="Diagnostics Service Description";
-        $Service->unitprice=50;
+        $Service->unitprice=50.99;
         $Service->unit="hour";
         $Service->save();
     }
@@ -44,7 +44,7 @@ class ServiceRepository extends Repository
         $Service->Code="TOW";
         $Service->name="TowTruck Service";
         $Service->description="TowTruck Service Description";
-        $Service->unitprice=20;
+        $Service->unitprice=20.50;
         $Service->unit="km";
         $Service->save();
     }
@@ -54,7 +54,7 @@ class ServiceRepository extends Repository
         $Service->Code="TIRE";
         $Service->name="TireChange Service";
         $Service->description="Tire Change Service Description";
-        $Service->unitprice=40;
+        $Service->unitprice=40.11;
         $Service->unit="pz";
         $Service->save();
     }

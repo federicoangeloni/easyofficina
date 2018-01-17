@@ -11,7 +11,7 @@ class SparePart extends Model
     protected $table = 'spareparts';
     protected $primaryKey = 'id';
 
-    public $fillable = ['quantita','warehouseid','catalogid'];
+    public $fillable = ['quantity','warehouseid','catalogid'];
 
 public function catalog()
 {

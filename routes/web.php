@@ -44,6 +44,7 @@ Route::post('/customers/add', 'CustomerController@add');
 Route::get('/customers', 'CustomerController@getall');
 Route::get('/customers/{id}', 'CustomerController@getById')->name('customer');
 
+
 //---------------------------- VEHICLES ROUTES --------------------------------------
 
 //SEARCH VEHICLES
@@ -61,6 +62,7 @@ Route::get('/vehicles/{id}', 'VehicleController@getById');
 
 //DELETE VEHICLE
 ROUTE::get('/vehicles/delete/{id}','VehicleController@delete');
+
 
 //---------------------------- JOBS ROUTES --------------------------------------
 
@@ -84,14 +86,44 @@ ROUTE::get('/jobs/delete/{id}','JobController@delete');
 Route::get('/jobs/{jobid}/operations', 'ElaboraInterventoController@listOperations');
 
 
-//---------------------------- SPAREPART ROUTES --------------------------------------
+//--------------------------- WAREHOUSE ROUTES ---------------------------------------//queste andranno inglobate nei futuri controller
+//SEARCH WAREHOUSE
+Route::get('/warehouses/search', 'WarehouseController@searchIndex');
+Route::post('/warehouses/search', 'WarehouseController@searchResult');
 
-//LIST ALL
+//ADD WAREHOUSE
+Route::get('/warehouses/add', 'WarehouseController@addIndex');
+Route::post('/warehouses/add', 'WarehouseController@add');
+
+//LIST ALL WAREHOUSE
+Route::get('/warehouses', 'WarehouseController@getall');
+Route::get('/warehouses/{id}', 'WarehouseController@getById')->name('warehouse');
+
+
+//--------------------------- CATALOG ROUTES ---------------------------------------//queste andranno inglobate nei futuri controller
+//SEARCH PARTS IN THE CATALOG
+Route::get('/catalog/search', 'CatalogController@searchIndex');
+Route::post('/catalog/search', 'CatalogController@searchResult');
+
+//LIST ALL PARTS IN THE CATALOG
+Route::get('/catalog', 'CatalogController@getall');
+Route::get('/catalog/{partid}', 'CatalogController@getById')->name('catalog');
+
+
+//---------------------------- SPAREPART ROUTES --------------------------------------//queste andranno inglobate nei futuri controller
+//SEARCH PARTS IN THE WAREHOUSES
+Route::get('/spareparts/search', 'SparePartController@searchIndex');
+Route::post('/spareparts/search', 'SparePartController@searchResult');
+
+//LIST ALL PARTS IN THE WAREHOUSES
 Route::get('/spareparts', 'SparePartController@getall');
 Route::get('/spareparts/{id}', 'SparePartController@getById')->name('spareparts');
+Route::get('/spareparts/warehouse/{id}', 'SparePartController@getByWarehouseId')->name('sparepartsWarehouse');
+
+//ADD A SPAREPART TO A WAREHOUSE
+//To do
 
 //---------------------------- ELABORAINTERVENTO ROUTES --------------------------------------
-
 
 Route::get('/operations/OperationSelect/{jobid}', 'ElaboraInterventoController@newOperationIndex');
 Route::get('/operations/SparePartIndex/{jobid}', 'ElaboraInterventoController@listSpareParts');
