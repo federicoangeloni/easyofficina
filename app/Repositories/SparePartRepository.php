@@ -36,17 +36,14 @@ class SparePartRepository extends Repository
         return $this->model->with(['catalog','warehouse'])->find($id);
     }
 
-    public function getQuantity($spareid,$warehouseid){
-        $sparepart = $this->model->where('warehouseid',$warehouseid)->where('catalogid',$spareid);
-        $quantity = $sparepart->quantity;
-    }
-
 
     public function updateQuantity($spareid,$warehouseid,$quantity){
-        $oldquantity = $this->getQuantity($spareid,$warehouseid);
-        $newquantity = $oldquantity-$quantity;
-        $this->model->where('warehouseid',$warehouseid)->where('catalogid',$spareid)->update('quantity',$newquantity);
+        $oldquantity = $this->model->where('id',$spareid)->where('warehouseid',$warehouseid)->first();
+        $newquantity = ($oldquantity->quantity)-$quantity;
+        $this->model->where('warehouseid',$warehouseid)->where('id',$spareid)->first()->update(['quantity' => $newquantity]);
     }
+
+
 
 
 

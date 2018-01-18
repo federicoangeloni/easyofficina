@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Observers\SparePartsObservers;
 use App\Repositories\ServiceUsageRepository;
 use App\Repositories\SparePartUsageRepository;
 use App\Service;
@@ -57,9 +58,11 @@ class ElaboraInterventoController extends Controller
         $SparePart->warehouseid=$request->warehouseid;
         $SparePart->quantity=$request->quantity;
 
-
-
         $sparepartUsageRepository->insert($SparePart);
+
+        $observer = new SparePartsObservers($SparePart->jobid, $SparePart->warehouseid, $SparePart->sparepartid,$SparePart->quantity);
+        $SparePart->attach($observer);
+        $SparePart->notify();
 
         //GET SERVICE AND ADD TO THE OPERATION JOB LIST
 

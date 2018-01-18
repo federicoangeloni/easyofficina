@@ -10,7 +10,7 @@ namespace App\OperationUsageConcrete\SparePartUsage;
 
 use Illuminate\Database\Eloquent\Model;
 
-class SparePartUsage extends Model
+class SparePartUsage extends Model implements \SplSubject
 {
 
     private $jobid;
@@ -18,7 +18,9 @@ class SparePartUsage extends Model
     private $warehouseid;
     private $quantity;
     private $description;
+
     public $timestamps = false;
+    public $observer;
 
 
     protected $table = 'sparepartusages';
@@ -38,10 +40,22 @@ class SparePartUsage extends Model
 
     public function gettotalprice(){}
 
-
     public function spareparts()
     {
         return $this->belongsTo('App\SparePart', 'sparepartid', 'id');
+    }
+
+    //Observer Auxiliary Classes
+    public function attach(\SplObserver $observer) {
+        $this->observer = $observer;
+    }
+
+    public function detach(\SplObserver $observer) {
+        $this->observer = null;
+    }
+
+    public function notify() {
+        $this->observer->update($this);
     }
 
 }

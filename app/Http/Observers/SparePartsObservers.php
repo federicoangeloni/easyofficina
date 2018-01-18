@@ -17,7 +17,8 @@ class SparePartsObservers implements \SplObserver
     protected $sparepartid;
     protected $quantity;
 
-    public function __construct($warehouseid, $sparepartid, $quantity) {
+    public function __construct($jobid, $warehouseid, $sparepartid, $quantity) {
+        $this->jobid = $jobid;
         $this->warehouseid = $warehouseid;
         $this->sparepartid = $sparepartid;
         $this->quantity = $quantity;
@@ -27,7 +28,9 @@ class SparePartsObservers implements \SplObserver
 
     public function update(\SplSubject $subject)
     {
-        $sparepartsrepo = new SparePartRepository(App::getInstance());
-        $sparepartsrepo->updateQuantity($this->sparepartid,$this->warehouseid,$this->quantity);
+        $sparePartsRepo = new SparePartRepository(App::getInstance());
+        $sparePartsRepo->updateQuantity($subject->sparepartid,$subject->warehouseid,$subject->quantity);
+        //$jobsRepo = new JobRepository(App::getInstance());
+        //$jobsRepo->updateAmount();
     }
 }

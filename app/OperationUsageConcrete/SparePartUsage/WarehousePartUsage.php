@@ -12,18 +12,7 @@ use App\Providers\AppServiceProvider;
 use App\Repositories\SparePartRepository As SparePartRepository;
 use Illuminate\Container\Container as App;
 
-class WarehousePartUsage extends SparePartUsage implements \SplSubject
+class WarehousePartUsage extends SparePartUsage
 {
 
-    public function attach(\SplObserver $observer) {
-        $this->observer = $observer;
-    }
-
-    public function detach(\SplObserver $observer) {
-        $this->observer = null;
-    }
-
-    public function notify() {
-        $this->observer->update($this);
-    }
 }

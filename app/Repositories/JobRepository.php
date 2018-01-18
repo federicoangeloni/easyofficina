@@ -35,6 +35,22 @@ class JobRepository extends Repository
         return $this->model->where($query)->get();
     }
 
+    public function calculateTotalAmount($jobid){
+        $sparePartUsageRepo = new SparePartUsageRepository();
+        $serviceUsageRepo = new ServiceUsageRepository();
+        $sparePartAmountCollection = $sparePartUsageRepo->model->where('id',$jobid)->select('warehouseid','sparepartid','quantity')->get();
+        $serviceUsageAmountCollection = $serviceUsageRepo->model->where('id',$jobid)->select('serviceid','quantity')->get();
+        foreach ($sparePartAmountCollection as $sparePartAmount){
+            echo $sparePartAmount;
+        }
 
+        $this->model->where('jobid',$warehouseid)->where('id',$spareid)->first()
+
+    }
+
+    /*public function updateAmount($jobid, $cost){
+        $oldquantity = $this->model->where('id',$spareid)->where('warehouseid',$warehouseid)->first();
+        $newquantity = ($oldquantity->quantity)-$quantity;
+        $this->model->where('warehouseid',$warehouseid)->where('id',$spareid)->first()->update(['quantity' => $newquantity]);
+    }*/
 }
-
