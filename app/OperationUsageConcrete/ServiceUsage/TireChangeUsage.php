@@ -8,7 +8,7 @@
 
 namespace App\OperationUsageConcrete\ServiceUsage;
 
-class TireChangeUsage implements ServiceUsage
+class TireChangeUsage extends ServiceUsage
 {
 
 public $quantity;

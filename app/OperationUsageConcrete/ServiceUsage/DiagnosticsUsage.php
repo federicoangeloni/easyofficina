@@ -10,27 +10,14 @@ namespace App\OperationUsageConcrete\ServiceUsage;
 
 use App\Repositories\ServiceRepository;
 use Illuminate\Container\Container as App;
-class DiagnosticsUsage implements ServiceUsage
+class DiagnosticsUsage extends ServiceUsage
 {
 
-public $quantity;
-private $name;
-private $descrition;
-private $unit="hour";
-private $unitprice;
 
-    public function __construct($quantity){
-
-        $app=App::getInstance();
-        $servicerepo=new ServiceRepository($app);
-        $service=$servicerepo->getDiagnosticService();
-
-        $this->unit=$service->unit;
-        $this->unitprice=$service->unitprice;
-        $this->descrition=$service->description;
-        $this->name=$service->name;
-        $this->quantity=$quantity;
-    }
+    public $name;
+    public $descrition;
+    public $unit="hour";
+    public $unitprice;
 
 
     public function getprice()

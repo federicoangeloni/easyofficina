@@ -9,9 +9,23 @@
 namespace App\OperationUsageConcrete\ServiceUsage;
 
 
-interface ServiceUsage
-{
+use Illuminate\Database\Eloquent\Model;
 
-public function getprice();
-public function addOperation($jobid);
+abstract class ServiceUsage extends Model
+{
+     public $timestamps = false;
+    protected $table = 'serviceusages';
+
+    public $fillable = ['serviceid','jobid','description','quantity'];
+
+    public static $rules = array(
+        'serviceid' => 'nullable',
+        'jobid' => 'nullable',
+        'description' => 'nullable',
+        'quantity' => 'nullable'
+    );
+
+
+public function getprice(){}
+public function addOperation($jobid){}
 }

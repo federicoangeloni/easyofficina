@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Observers\SparePartsObservers;
+use App\Service;
 use Illuminate\Container\Container as App;
 use App\Repositories\OperationRepository;
 use App\Repositories\ServiceRepository;
@@ -10,6 +10,7 @@ use App\Repositories\SparePartRepository;
 use App\OperationUsageFactory\OperationFactoryProducer;
 use Illuminate\Http\Request;
 
+use App\OperationUsageConcrete\ServiceUsage;
 class ElaboraInterventoController extends Controller
 {
 
@@ -56,35 +57,35 @@ class ElaboraInterventoController extends Controller
         //MUST GET VARIABLES FROM REQUEST ARRAY
         $SparePart=$SparePartFactory->getSparePartUsage($warehouseid,$quantity,$sparepartid,$jobid);
 
-        //MUST ATTACH THE OBSERVER TO THE NEW SPARE PART USAGE
-        $observer = new SparePartsObservers($warehouseid,$sparepartid,$quantity);
-        $SparePart->attach($observer);
-
         //GET SERVICE AND ADD TO THE OPERATION JOB LIST
 
         $Operation=$SparePart->addOperation();
-
-        $SparePart->notify();
-        $SparePart->detach($observer);
 
         return $this->listOperations($jobid);
 
     }
 
     public function newServiceUsage(Request $request,OperationFactoryProducer $operationFactoryProducer){
-        $serviceid=$request->servicecode;
-        $jobid=$request->jobid;
-        $quantity=$request->quantity;
+        $servicecode=
+
 
         $ServiceFactory = $operationFactoryProducer::getFactory('SERVICE');
 
         //MUST GET VARIABLES FROM REQUEST ARRAY
-        $Service=$ServiceFactory->getServiceUsage($serviceid,$quantity);
+        $ServiceUsage=$ServiceFactory->getServiceUsage($request->servicecode);
+
+
+        $ServiceUsage->serviceid=$request->serviceid;
+        $ServiceUsage->jobid=$request->jobid;
+        $ServiceUsage->quantity=$request->quantity;
+        $ServiceUsage->save();
+
+
 
         //GET SERVICE AND ADD TO THE OPERATION JOB LIST
-        $Operation=$Service->addOperation($jobid);
+        //$Operation=$Service->addOperation($jobid);
 
-        return $this->listOperations($jobid);
+        return $this->listOperations($request->jobid);
 
     }
 }

@@ -11,7 +11,7 @@ namespace App\OperationUsageConcrete\ServiceUsage;
 use App\Repositories\ServiceRepository;
 use Illuminate\Container\Container as App;
 
-class TowTruckUsage implements ServiceUsage
+class TowTruckUsage extends ServiceUsage
 {
 
     public $quantity;

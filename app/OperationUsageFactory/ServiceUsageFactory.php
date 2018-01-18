@@ -15,20 +15,20 @@ class ServiceUsageFactory extends OperationFactory
 {
 
     /*@Override*/
-    public function getServiceUsage($ServiceType,$Quantity){
+    public function getServiceUsage($ServiceType){
 
         if($ServiceType == null){
             return null;
         }
 
         if(strcasecmp("DIAG", $ServiceType)==0){
-            return new DiagnosticsUsage($Quantity);
+            return new DiagnosticsUsage();
 
         }else if(strcasecmp("TIRE", $ServiceType)==0){
-            return new TireChangeUsage($Quantity);
+            return new TireChangeUsage();
 
         }else if(strcasecmp("TOW", $ServiceType)==0){
-            return new TowTruckUsage($Quantity);
+            return new TowTruckUsage();
         }
 
         return null;
