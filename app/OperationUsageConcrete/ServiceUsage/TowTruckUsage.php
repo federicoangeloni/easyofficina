@@ -14,46 +14,15 @@ use Illuminate\Container\Container as App;
 class TowTruckUsage extends ServiceUsage
 {
 
-    public $quantity;
-    private $name;
-    private $descrition;
-    private $unit="hour";
-    private $unitprice;
-
-    public function __construct($quantity){
-
-        $app=App::getInstance();
-        $servicerepo=new ServiceRepository($app);
-        $service=$servicerepo->getTowTruckService();
-        $this->unit=$service->unit;
-        $this->unitprice=$service->unitprice;
-        $this->descrition=$service->description;
-        $this->name=$service->name;
-        $this->quantity=$quantity;
+    public function getunitprice()
+    {
+        $ServiceRepository = new ServiceRepository(App::getInstance());
+        $Service=$ServiceRepository->getTowTruckService();
+        return $Service->unitprice;
     }
 
-
-    public function getprice()
-    {
-        // TODO: Implement getprice() method.
-        return ($this->unitprice*$this->quantity);
-    }
-
-
-    public function addOperation($jobid)
-    {
-
-        $Operation = new \App\Operation();
-        $Operation->jobid=$jobid;
-        $Operation->name=$this->name;
-        $Operation->description=$this->descrition;
-        $Operation->quantity=$this->quantity;
-        $Operation->unit=$this->unit;
-        $Operation->unitprice=$this->unitprice;
-        $Operation->totalprice=$this->getprice();
-        $Operation->save();
-        return $Operation;
-        // TODO: Implement getoperation() method.
-
+    public function gettotalprice(){
+        $unitprice=$this->getunitprice();
+        return $this->quantity*$unitprice;
     }
 }

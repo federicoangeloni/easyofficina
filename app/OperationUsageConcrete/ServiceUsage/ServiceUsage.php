@@ -11,9 +11,10 @@ namespace App\OperationUsageConcrete\ServiceUsage;
 
 use Illuminate\Database\Eloquent\Model;
 
-abstract class ServiceUsage extends Model
+class ServiceUsage extends Model
 {
-     public $timestamps = false;
+
+    public $timestamps = false;
     protected $table = 'serviceusages';
 
     public $fillable = ['serviceid','jobid','description','quantity'];
@@ -26,6 +27,9 @@ abstract class ServiceUsage extends Model
     );
 
 
-public function getprice(){}
-public function addOperation($jobid){}
+
+    public function getunitprice(){}
+
+    public function gettotalprice(){}
+
 }

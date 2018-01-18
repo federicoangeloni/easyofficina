@@ -11,5 +11,5 @@ namespace App\OperationUsageFactory;
 abstract class OperationFactory
 {
     abstract function getServiceUsage($ServiceType);
-    abstract function getSparePartUsage($SparePartOrigin,$Quantity,$SparePartId,$jobid);
+    abstract function getSparePartUsage($WarehouseId);
 }

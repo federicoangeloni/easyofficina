@@ -12,8 +12,9 @@ namespace App\Repositories;
 
 use App\Repositories\Repository as Repository;
 use App\Job as Job;
+use App\Service;
 
-class OperationRepository extends Repository
+class ServiceUsageRepository extends Repository
 {
 
     /**
@@ -24,13 +25,15 @@ class OperationRepository extends Repository
 
     public function setmodel()
     {
-        return $this->model = "App\Operation";
+        return $this->model = "App\OperationUsageConcrete\ServiceUsage\ServiceUsage";
     }
 
-    public function getJobOperations($jobid){
-
-        return $this->model->where('jobid',$jobid)->get();
+    public function getByJobId($jobid){
+        $Services =parent::search(array('jobid'=>$jobid));
+        return $Services;
     }
+
+
 
 
 }

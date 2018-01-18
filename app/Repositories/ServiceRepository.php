@@ -29,7 +29,7 @@ class ServiceRepository extends Repository
     }
 
 
-    public function createDiagService(){
+    private function createDiagService(){
         $Service= new Service();
         $Service->Code="DIAG";
         $Service->name="Diagnostics Service";
@@ -39,7 +39,7 @@ class ServiceRepository extends Repository
         $Service->save();
     }
 
-    public function createTowService(){
+    private function createTowService(){
         $Service= new Service();
         $Service->Code="TOW";
         $Service->name="TowTruck Service";
@@ -49,7 +49,7 @@ class ServiceRepository extends Repository
         $Service->save();
     }
 
-    public function createTireService(){
+    private function createTireService(){
         $Service= new Service();
         $Service->Code="TIRE";
         $Service->name="TireChange Service";
@@ -78,16 +78,17 @@ class ServiceRepository extends Repository
     public function getDiagnosticService(){
 
         $service =parent::search(array('code'=>'DIAG'))->first();
-
         return $service;
     }
 
     public function getTireChangeService(){
-        return parent::getById(2);
+        $service =parent::search(array('code'=>'TIRE'))->first();
+        return $service;
     }
 
     public function getTowTruckService(){
-        return parent::getById(3);
+        $service =parent::search(array('code'=>'TOW'))->first();
+        return $service;
     }
 
 

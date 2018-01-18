@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\ServiceUsageRepository;
+use App\Repositories\SparePartUsageRepository;
 use App\Service;
 use Illuminate\Container\Container as App;
 use App\Repositories\OperationRepository;
@@ -35,37 +37,37 @@ class ElaboraInterventoController extends Controller
 
     public function listOperations($jobid){
 
-        $operationRepository = new OperationRepository(App::getInstance());
 
-        $operations = $operationRepository->getJobOperations($jobid);
 
-        return view('operations.jobOperationList',compact('operations','jobid'));
+        return view('operations.jobOperationList',compact('jobid'));
     }
 
 
-    public function newSparePartUsage(Request $request){
-
-        $jobid=$request->jobid;
-        $warehouseid=$request->warehouseid;
-        $sparepartid=$request->sparepartid;
-        $quantity=$request->quantity;
+    public function newSparePartUsage(Request $request,SparePartUsageRepository $sparepartUsageRepository){
 
         $operationFactoryProducer=new OperationFactoryProducer();
 
         $SparePartFactory = $operationFactoryProducer::getFactory('SPAREPART');
 
         //MUST GET VARIABLES FROM REQUEST ARRAY
-        $SparePart=$SparePartFactory->getSparePartUsage($warehouseid,$quantity,$sparepartid,$jobid);
+        $SparePart=$SparePartFactory->getSparePartUsage($request->sparepartid);
+
+        $SparePart->jobid=$request->jobid;
+        $SparePart->sparepartid=$request->sparepartid;
+        $SparePart->warehouseid=$request->warehouseid;
+        $SparePart->quantity=$request->quantity;
+
+
+
+        $sparepartUsageRepository->insert($SparePart);
 
         //GET SERVICE AND ADD TO THE OPERATION JOB LIST
 
-        $Operation=$SparePart->addOperation();
-
-        return $this->listOperations($jobid);
+        return $this->listOperations($request->jobid);
 
     }
 
-    public function newServiceUsage(Request $request,OperationFactoryProducer $operationFactoryProducer){
+    public function newServiceUsage(Request $request,ServiceUsageRepository $serviceUsageRepository,OperationFactoryProducer $operationFactoryProducer){
         $servicecode=
 
 
@@ -78,7 +80,8 @@ class ElaboraInterventoController extends Controller
         $ServiceUsage->serviceid=$request->serviceid;
         $ServiceUsage->jobid=$request->jobid;
         $ServiceUsage->quantity=$request->quantity;
-        $ServiceUsage->save();
+
+        $serviceUsageRepository->insert($ServiceUsage);
 
 
 

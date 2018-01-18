@@ -13,34 +13,17 @@ use Illuminate\Container\Container as App;
 class DiagnosticsUsage extends ServiceUsage
 {
 
-
-    public $name;
-    public $descrition;
-    public $unit="hour";
-    public $unitprice;
-
-
-    public function getprice()
+    public function getunitprice()
     {
-        // TODO: Implement getprice() method.
-        return ($this->unitprice*$this->quantity);
+        $ServiceRepository = new ServiceRepository(App::getInstance());
+        $Service=$ServiceRepository->getDiagnosticService();
+        return $Service->unitprice;
+    }
+
+    public function gettotalprice(){
+        $unitprice=$this->getunitprice();
+        return $this->quantity*$unitprice;
     }
 
 
-    public function addOperation($jobid)
-    {
-
-        $Operation = new \App\Operation(['name' => 'Diagnostics','description'=>'',]);
-        $Operation->jobid=$jobid;
-        $Operation->name=$this->name;
-        $Operation->description=$this->descrition;
-        $Operation->quantity=$this->quantity;
-        $Operation->unit=$this->unit;
-        $Operation->unitprice=$this->unitprice;
-        $Operation->totalprice=$this->getprice();
-        $Operation->save();
-        return $Operation;
-        // TODO: Implement getoperation() method.
-
-    }
 }

@@ -27,10 +27,5 @@ class CatalogRepository extends Repository
         return $this->model = "App\Catalog";
     }
 
-    public function getById($partid){
-
-        return $this->model->where('partid',$partid)->first();
-    }
-
 
 }

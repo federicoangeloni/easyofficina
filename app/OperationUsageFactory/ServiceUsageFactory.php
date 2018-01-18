@@ -36,7 +36,7 @@ class ServiceUsageFactory extends OperationFactory
     }
 
     /*@Override*/
-    public function getSparePartUsage($SparePartOrigin,$Quantity,$SparePartId,$jobid){
+    public function getSparePartUsage($SparePartOrigin){
         return null;
     }
 

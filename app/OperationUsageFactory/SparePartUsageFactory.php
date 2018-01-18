@@ -12,18 +12,16 @@ use App\OperationUsageConcrete\SparePartUsage\WarehousePartUsage;
 class SparePartUsageFactory extends OperationFactory
 {
     /*@Override*/
-    public function getServiceUsage($ServiceType,$Quantity){
+    public function getServiceUsage($ServiceType){
         return null;
     }
 
     /*@Override*/
-    public function getSparePartUsage($Warehouseid,$Quantity,$SparePartId,$jobid){
+    public function getSparePartUsage($Warehouseid){
 
         if($Warehouseid==1){
 
-
-            return new WarehousePartUsage($Quantity,$SparePartId,$jobid);
-
+            return new WarehousePartUsage();
 
         }
 

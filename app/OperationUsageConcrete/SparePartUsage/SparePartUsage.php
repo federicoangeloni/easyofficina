@@ -8,11 +8,40 @@
 
 namespace App\OperationUsageConcrete\SparePartUsage;
 
-interface SparePartUsage
+use Illuminate\Database\Eloquent\Model;
+
+class SparePartUsage extends Model
 {
 
-public function getprice();
+    private $jobid;
+    private $sparepartid;
+    private $warehouseid;
+    private $quantity;
+    private $description;
+    public $timestamps = false;
 
-public function addOperation();
+
+    protected $table = 'sparepartusages';
+
+    public $fillable = ['sparepartid','warehouseid','jobid','description','quantity'];
+
+    public static $rules = array(
+        'sparepartid' => 'nullable',
+        'jobid' => 'nullable',
+        'description' => 'nullable',
+        'quantity' => 'nullable'
+    );
+
+
+
+    public function getunitprice(){}
+
+    public function gettotalprice(){}
+
+
+    public function spareparts()
+    {
+        return $this->belongsTo('App\SparePart', 'sparepartid', 'id');
+    }
 
 }
