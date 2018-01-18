@@ -20,6 +20,7 @@ class CreateJobsTable extends Migration
             $table->longText('description')->nullable();
             $table->string('amount')->nullable();
             $table->boolean('completed')->default(false);
+            $table->boolean('payed')->default(false);
 
 
             $table->integer('vehicleid')->unsigned();
