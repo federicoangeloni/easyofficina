@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Observers\SparePartsObservers;
 use Illuminate\Container\Container as App;
 use App\Repositories\OperationRepository;
 use App\Repositories\ServiceRepository;
@@ -55,9 +56,16 @@ class ElaboraInterventoController extends Controller
         //MUST GET VARIABLES FROM REQUEST ARRAY
         $SparePart=$SparePartFactory->getSparePartUsage($warehouseid,$quantity,$sparepartid,$jobid);
 
+        //MUST ATTACH THE OBSERVER TO THE NEW SPARE PART USAGE
+        $observer = new SparePartsObservers($warehouseid,$sparepartid,$quantity);
+        $SparePart->attach($observer);
+
         //GET SERVICE AND ADD TO THE OPERATION JOB LIST
 
         $Operation=$SparePart->addOperation();
+
+        $SparePart->notify();
+        $SparePart->detach($observer);
 
         return $this->listOperations($jobid);
 

@@ -11,7 +11,6 @@ namespace App\Repositories;
 
 
 use App\Repositories\Repository as Repository;
-use App\SparePart as SparePart;
 use Illuminate\Container\Container as App;
 
 class SparePartRepository extends Repository
@@ -35,6 +34,18 @@ class SparePartRepository extends Repository
     public function getById($id){
 
         return $this->model->with(['catalog','warehouse'])->find($id);
+    }
+
+    public function getQuantity($spareid,$warehouseid){
+        $sparepart = $this->model->where('warehouseid',$warehouseid)->where('catalogid',$spareid);
+        $quantity = $sparepart->quantity;
+    }
+
+
+    public function updateQuantity($spareid,$warehouseid,$quantity){
+        $oldquantity = $this->getQuantity($spareid,$warehouseid);
+        $newquantity = $oldquantity-$quantity;
+        $this->model->where('warehouseid',$warehouseid)->where('catalogid',$spareid)->update('quantity',$newquantity);
     }
 
 

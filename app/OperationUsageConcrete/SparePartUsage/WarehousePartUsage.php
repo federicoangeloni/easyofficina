@@ -12,7 +12,7 @@ use App\Providers\AppServiceProvider;
 use App\Repositories\SparePartRepository As SparePartRepository;
 use Illuminate\Container\Container as App;
 
-class WarehousePartUsage implements SparePartUsage
+class WarehousePartUsage implements SparePartUsage, \SplSubject
 {
 
 private $quantity;
@@ -22,6 +22,7 @@ private $unitprice;
 private $name;
 private $description;
 private $warehousename;
+private $observer;
 
 
 public function __construct($quantity,$sparepartid,$jobid){
@@ -39,6 +40,7 @@ public function __construct($quantity,$sparepartid,$jobid){
         $this->warehousename=$sparepart->warehouse['name'];
         $this->jobid=$jobid;
         $this->quantity=$quantity;
+
     }
 
     public function getprice()
@@ -65,8 +67,15 @@ public function __construct($quantity,$sparepartid,$jobid){
 
     }
 
-    public function notify()
-    {
+    public function attach(\SplObserver $observer) {
+        $this->observer = $observer;
+    }
 
+    public function detach(\SplObserver $observer) {
+        $this->observer = null;
+    }
+
+    public function notify() {
+        $this->observer->update($this);
     }
 }
