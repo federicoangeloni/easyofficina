@@ -16,4 +16,7 @@ class Warehouse extends Model
         'address' => 'nullable',
         'description' => 'nullable'
     );
+
+
+
 }

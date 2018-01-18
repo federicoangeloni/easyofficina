@@ -13,6 +13,16 @@ use Illuminate\Container\Container as App;
 
 class TireChangeUsage extends ServiceUsage
 {
+
+    public function __construct(array $attributes = [])
+    {
+        $ServiceRepository = new ServiceRepository(App::getInstance());
+        $Service=$ServiceRepository->getTireChangeService();
+        $this->serviceid=$Service->id;
+        parent::__construct($attributes);
+
+    }
+
     public function getunitprice()
     {
         $ServiceRepository = new ServiceRepository(App::getInstance());

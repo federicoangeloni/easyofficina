@@ -27,5 +27,8 @@ class WarehouseRepository extends Repository
         return $this->model = "App\Warehouse";
     }
 
-
+    public function getWareHouse1(){
+        $warehouse =parent::search(array('id'=>1))->first();
+        return $warehouse;
+    }
 }

@@ -8,11 +8,20 @@
 
 namespace App\OperationUsageConcrete\SparePartUsage;
 
-use App\Providers\AppServiceProvider;
-use App\Repositories\SparePartRepository As SparePartRepository;
+
+use App\Repositories\WarehouseRepository;
 use Illuminate\Container\Container as App;
 
 class WarehousePartUsage extends SparePartUsage
 {
+
+    public function __construct(array $attributes = [])
+    {
+        $WarehouseRepository = new WarehouseRepository(App::getInstance());
+        $Warehouse=$WarehouseRepository->getWareHouse1();
+        $this->warehouseid=$Warehouse->id;
+        parent::__construct($attributes);
+
+    }
 
 }

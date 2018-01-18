@@ -55,7 +55,6 @@ class ElaboraInterventoController extends Controller
 
         $SparePart->jobid=$request->jobid;
         $SparePart->sparepartid=$request->sparepartid;
-        $SparePart->warehouseid=$request->warehouseid;
         $SparePart->quantity=$request->quantity;
 
         $sparepartUsageRepository->insert($SparePart);
@@ -79,8 +78,6 @@ class ElaboraInterventoController extends Controller
         //MUST GET VARIABLES FROM REQUEST ARRAY
         $ServiceUsage=$ServiceFactory->getServiceUsage($request->servicecode);
 
-
-        $ServiceUsage->serviceid=$request->serviceid;
         $ServiceUsage->jobid=$request->jobid;
         $ServiceUsage->quantity=$request->quantity;
 

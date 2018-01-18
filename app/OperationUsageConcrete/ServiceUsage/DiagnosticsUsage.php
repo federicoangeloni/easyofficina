@@ -13,6 +13,15 @@ use Illuminate\Container\Container as App;
 class DiagnosticsUsage extends ServiceUsage
 {
 
+    public function __construct(array $attributes = [])
+    {
+        $ServiceRepository = new ServiceRepository(App::getInstance());
+        $Service=$ServiceRepository->getDiagnosticService();
+        $this->serviceid=$Service->id;
+        parent::__construct($attributes);
+
+    }
+
     public function getunitprice()
     {
         $ServiceRepository = new ServiceRepository(App::getInstance());

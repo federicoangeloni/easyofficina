@@ -14,6 +14,15 @@ use Illuminate\Container\Container as App;
 class TowTruckUsage extends ServiceUsage
 {
 
+    public function __construct(array $attributes = [])
+    {
+        $ServiceRepository = new ServiceRepository(App::getInstance());
+        $Service=$ServiceRepository->getTowTruckService();
+        $this->serviceid=$Service->id;
+        parent::__construct($attributes);
+
+    }
+
     public function getunitprice()
     {
         $ServiceRepository = new ServiceRepository(App::getInstance());
