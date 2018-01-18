@@ -40,21 +40,21 @@ class JobRepository extends Repository
     public function calculateTotalAmount($jobid){
         $sparePartUsageRepo = new SparePartUsageRepository(App::getInstance());
         $serviceUsageRepo = new ServiceUsageRepository(App::getInstance());
-        $sparePartAmountCollection = $sparePartUsageRepo->model->where('id',$jobid)->select('warehouseid','sparepartid','quantity')->get();
-        $serviceUsageAmountCollection = $serviceUsageRepo->model->where('id',$jobid)->select('serviceid','quantity')->get();
+        $sparePartAmountCollection = $sparePartUsageRepo->model->where('jobid',$jobid)->select('warehouseid','sparepartid','quantity')->get();
+        $serviceUsageAmountCollection = $serviceUsageRepo->model->where('jobid',$jobid)->select('serviceid','quantity')->get();
         $sparePartRepo = new SparePartRepository(App::getInstance());
         $catalogRepo = new CatalogRepository(App::getInstance());
         $totalAmount = 0;
+
+
         foreach ($sparePartAmountCollection as $sparePartAmount){
             $catalogId = $sparePartRepo->model->where('warehouseid',$sparePartAmount->warehouseid)->where('id',$sparePartAmount->sparepartid)->select('catalogid')->first();
-            $unitAmount = $catalogRepo->model->where('id',$catalogId)->select('unitprice')->first();
-            $temporaryAmount = $unitAmount * ($sparePartAmount->quantity);
+
+            $unitAmount = $catalogRepo->model->where('partid',$catalogId->catalogid)->select('unitprice')->first();
+            $temporaryAmount = ($unitAmount->unitprice * ($sparePartAmount->quantity));
             $totalAmount = $totalAmount + $temporaryAmount;
         }
-        echo $totalAmount;
-
-        //$this->model->where('jobid',$warehouseid)->where('id',$spareid)->first()
-
+        $this->model->where('id', $jobid)->update(['amount' => $totalAmount]);
     }
 
 }
