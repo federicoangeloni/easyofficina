@@ -9,6 +9,8 @@
 namespace App\Http\Observers;
 use Illuminate\Container\Container as App;
 use App\Repositories\SparePartRepository as SparePartRepository;
+use App\Repositories\JobRepository as JobRepository;
+
 
 
 class SparePartsObservers implements \SplObserver
@@ -28,9 +30,12 @@ class SparePartsObservers implements \SplObserver
 
     public function update(\SplSubject $subject)
     {
+        //Update the Warehouse availability
         $sparePartsRepo = new SparePartRepository(App::getInstance());
         $sparePartsRepo->updateQuantity($subject->sparepartid,$subject->warehouseid,$subject->quantity);
-        //$jobsRepo = new JobRepository(App::getInstance());
-        //$jobsRepo->updateAmount();
+
+        //Update the Amount of the Job
+        $jobsRepo = new JobRepository(App::getInstance());
+        $jobsRepo->calculateTotalAmount($subject->jobid);
     }
 }

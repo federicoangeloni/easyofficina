@@ -40,7 +40,7 @@ class SparePartUsage extends Model implements \SplSubject
 
     public function gettotalprice(){}
 
-    public function spareparts()
+    public function sparepart()
     {
         return $this->belongsTo('App\SparePart', 'sparepartid', 'id');
     }

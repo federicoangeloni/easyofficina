@@ -11,7 +11,9 @@ namespace App\Repositories;
 
 
 use App\Repositories\Repository as Repository;
-use App\Job as Job;
+use Illuminate\Container\Container as App;
+use App\Repositories\SparePartRepository as SparePartRepository;
+
 
 class JobRepository extends Repository
 {
@@ -36,21 +38,23 @@ class JobRepository extends Repository
     }
 
     public function calculateTotalAmount($jobid){
-        $sparePartUsageRepo = new SparePartUsageRepository();
-        $serviceUsageRepo = new ServiceUsageRepository();
+        $sparePartUsageRepo = new SparePartUsageRepository(App::getInstance());
+        $serviceUsageRepo = new ServiceUsageRepository(App::getInstance());
         $sparePartAmountCollection = $sparePartUsageRepo->model->where('id',$jobid)->select('warehouseid','sparepartid','quantity')->get();
         $serviceUsageAmountCollection = $serviceUsageRepo->model->where('id',$jobid)->select('serviceid','quantity')->get();
+        $sparePartRepo = new SparePartRepository(App::getInstance());
+        $catalogRepo = new CatalogRepository(App::getInstance());
+        $totalAmount = 0;
         foreach ($sparePartAmountCollection as $sparePartAmount){
-            echo $sparePartAmount;
+            $catalogId = $sparePartRepo->model->where('warehouseid',$sparePartAmount->warehouseid)->where('id',$sparePartAmount->sparepartid)->select('catalogid')->first();
+            $unitAmount = $catalogRepo->model->where('id',$catalogId)->select('unitprice')->first();
+            $temporaryAmount = $unitAmount * ($sparePartAmount->quantity);
+            $totalAmount = $totalAmount + $temporaryAmount;
         }
+        echo $totalAmount;
 
-        $this->model->where('jobid',$warehouseid)->where('id',$spareid)->first()
+        //$this->model->where('jobid',$warehouseid)->where('id',$spareid)->first()
 
     }
 
-    /*public function updateAmount($jobid, $cost){
-        $oldquantity = $this->model->where('id',$spareid)->where('warehouseid',$warehouseid)->first();
-        $newquantity = ($oldquantity->quantity)-$quantity;
-        $this->model->where('warehouseid',$warehouseid)->where('id',$spareid)->first()->update(['quantity' => $newquantity]);
-    }*/
 }
