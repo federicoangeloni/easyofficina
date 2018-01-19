@@ -3,17 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Http\Observers\SparePartsObservers;
+use App\Http\Observers\ServiceObservers;
 use App\Repositories\ServiceUsageRepository;
 use App\Repositories\SparePartUsageRepository;
-use App\Service;
-use Illuminate\Container\Container as App;
 use App\Repositories\OperationRepository;
 use App\Repositories\ServiceRepository;
 use App\Repositories\SparePartRepository;
+use Illuminate\Container\Container as App;
 use App\OperationUsageFactory\OperationFactoryProducer;
 use Illuminate\Http\Request;
 
-use App\OperationUsageConcrete\ServiceUsage;
+
 class ElaboraInterventoController extends Controller
 {
 
@@ -24,21 +24,17 @@ class ElaboraInterventoController extends Controller
 
     public function listSpareParts($jobid,SparePartRepository $sparePartRepository)
     {
-
         $spareparts = $sparePartRepository->getall();
-
         return view('operations.sparePartList',compact('spareparts','jobid'));
     }
 
     public function listServices($jobid,ServiceRepository $serviceRepository){
-        $services = $serviceRepository->getall();
 
+        $services = $serviceRepository->getall();
         return view('operations.servicesList',compact('services','jobid'));
     }
 
     public function listOperations($jobid){
-
-
 
         return view('operations.jobOperationList',compact('jobid'));
     }
@@ -62,16 +58,15 @@ class ElaboraInterventoController extends Controller
         $observer = new SparePartsObservers($SparePart->jobid, $SparePart->warehouseid, $SparePart->sparepartid,$SparePart->quantity);
         $SparePart->attach($observer);
         $SparePart->notify();
+        $SparePart->detach($observer);
+
 
         //GET SERVICE AND ADD TO THE OPERATION JOB LIST
-
         return $this->listOperations($request->jobid);
 
     }
 
     public function newServiceUsage(Request $request,ServiceUsageRepository $serviceUsageRepository,OperationFactoryProducer $operationFactoryProducer){
-        $servicecode=
-
 
         $ServiceFactory = $operationFactoryProducer::getFactory('SERVICE');
 
@@ -83,7 +78,10 @@ class ElaboraInterventoController extends Controller
 
         $serviceUsageRepository->insert($ServiceUsage);
 
-
+        $observer = new ServiceObservers($ServiceUsage->jobid, $ServiceUsage->quantity);
+        $ServiceUsage->attach($observer);
+        $ServiceUsage->notify();
+        $ServiceUsage->detach($observer);
 
         //GET SERVICE AND ADD TO THE OPERATION JOB LIST
         //$Operation=$Service->addOperation($jobid);

@@ -44,6 +44,8 @@ class JobController extends Controller
         //Add Customer Name to Job object for View
         $job->customer = $customer->name." ".$customer->surname;
 
+        $this->ActiveRepository->calculateTotalAmount($id);
+
         return view('jobs.job')->with('job', $job);
     }
 

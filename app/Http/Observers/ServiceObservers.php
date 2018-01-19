@@ -8,21 +8,16 @@
 
 namespace App\Http\Observers;
 use Illuminate\Container\Container as App;
-use App\Repositories\SparePartRepository as SparePartRepository;
 use App\Repositories\JobRepository as JobRepository;
 
 
-
-class SparePartsObservers implements \SplObserver
+class ServiceObservers implements \SplObserver
 {
-    protected $warehouseid;
-    protected $sparepartid;
+    protected $serviceid;
     protected $quantity;
 
-    public function __construct($jobid, $warehouseid, $sparepartid, $quantity) {
-        $this->jobid = $jobid;
-        $this->warehouseid = $warehouseid;
-        $this->sparepartid = $sparepartid;
+    public function __construct($serviceid, $quantity) {
+        $this->serviceid = $serviceid;
         $this->quantity = $quantity;
         return $this;
     }

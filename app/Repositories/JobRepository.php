@@ -38,22 +38,31 @@ class JobRepository extends Repository
     }
 
     public function calculateTotalAmount($jobid){
+
+        //Calculate the amount of the spare parts of the job
         $sparePartUsageRepo = new SparePartUsageRepository(App::getInstance());
-        $serviceUsageRepo = new ServiceUsageRepository(App::getInstance());
         $sparePartAmountCollection = $sparePartUsageRepo->model->where('jobid',$jobid)->select('warehouseid','sparepartid','quantity')->get();
-        $serviceUsageAmountCollection = $serviceUsageRepo->model->where('jobid',$jobid)->select('serviceid','quantity')->get();
         $sparePartRepo = new SparePartRepository(App::getInstance());
         $catalogRepo = new CatalogRepository(App::getInstance());
         $totalAmount = 0;
-
-
         foreach ($sparePartAmountCollection as $sparePartAmount){
             $catalogId = $sparePartRepo->model->where('warehouseid',$sparePartAmount->warehouseid)->where('id',$sparePartAmount->sparepartid)->select('catalogid')->first();
-
             $unitAmount = $catalogRepo->model->where('partid',$catalogId->catalogid)->select('unitprice')->first();
             $temporaryAmount = ($unitAmount->unitprice * ($sparePartAmount->quantity));
             $totalAmount = $totalAmount + $temporaryAmount;
         }
+
+        //Calculate the amount of the services of the job
+        $serviceUsageRepo = new ServiceUsageRepository(App::getInstance());
+        $serviceUsageAmountCollection = $serviceUsageRepo->model->where('jobid',$jobid)->select('serviceid','quantity')->get();
+        $serviceRepo = new ServiceRepository(App::getInstance());
+        foreach ($serviceUsageAmountCollection as $serviceAmount){
+            $unitAmount = $serviceRepo->model->where('id',$serviceAmount->serviceid)->first();
+            $temporaryAmount = ($unitAmount->unitprice * ($serviceAmount->quantity));
+            $totalAmount = $totalAmount + $temporaryAmount;
+        }
+
+        //Update the amount of the job
         $this->model->where('id', $jobid)->update(['amount' => $totalAmount]);
     }
 
