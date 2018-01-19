@@ -9,6 +9,7 @@
 namespace App\OperationUsageConcrete\SparePartUsage;
 
 
+use App\Repositories\SparePartRepository;
 use App\Repositories\WarehouseRepository;
 use Illuminate\Container\Container as App;
 
@@ -23,5 +24,23 @@ class WarehousePartUsage extends SparePartUsage
         parent::__construct($attributes);
 
     }
+
+    public function partusages()
+    {
+        return $this->morphMany('App\OperationUsageConcrete\SparePartUsage\SparePartUsage', 'partusage');
+    }
+
+    public function getPriceAttribute()
+    {
+        $SparePartRepository = new SparePartRepository(App::getInstance());
+        return $SparePartRepository->getSparePartPrice($this->sparepartid);
+
+    }
+
+    public function getTotalPriceAttribute(){
+        $unitprice=$this->price;
+        return $this->quantity*$unitprice;
+    }
+
 
 }

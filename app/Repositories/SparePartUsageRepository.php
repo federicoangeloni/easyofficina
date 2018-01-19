@@ -29,8 +29,18 @@ class SparePartUsageRepository extends Repository
     }
 
     public function getByJobId($jobid){
-        $PartUsages =$this->model->with('spareparts')->where('id',$jobid);
+        $PartUsages =$this->model->with('sparepart.catalog')->where('jobid',$jobid)->get();
         return $PartUsages;
+    }
+
+    public function savePartUsage($PartUsage){
+
+        $SavedPartUsage=$PartUsage->partusages()->save($PartUsage);
+
+        $Part=parent::getById($SavedPartUsage->id);
+        $Part->partusage_id=$Part->id;
+        $Part->save();
+
     }
 
 

@@ -18,6 +18,7 @@ class SparePartUsage extends Model implements \SplSubject
     private $warehouseid;
     private $quantity;
     private $description;
+    private $price;
 
     public $timestamps = false;
     public $observer;
@@ -35,8 +36,16 @@ class SparePartUsage extends Model implements \SplSubject
     );
 
 
+    public function partusage()
+    {
+        return $this->morphTo();
+    }
 
-    public function getunitprice(){}
+    public function getPriceAttribute()
+    {
+        //do whatever you want to do
+        return 'sdsd';
+    }
 
     public function gettotalprice(){}
 

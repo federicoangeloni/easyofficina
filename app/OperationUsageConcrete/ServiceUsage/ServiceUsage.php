@@ -19,23 +19,24 @@ class ServiceUsage extends Model implements \SplSubject
 
     protected $table = 'serviceusages';
 
-    public $fillable = ['serviceid','jobid','description','quantity'];
+    public $fillable = ['service_id','serviceid','jobid','description','quantity'];
 
     public static $rules = array(
-        'serviceid' => 'nullable',
+        'service_id' => 'nullable',
         'jobid' => 'nullable',
         'description' => 'nullable',
         'quantity' => 'nullable'
     );
 
-    public function getunitprice(){
-
+    public function service_details()
+    {
+        return $this->belongsTo('App\Service', 'serviceid', 'id');
     }
 
-    public function gettotalprice(){
-
+    public function service()
+    {
+        return $this->morphTo();
     }
-
 
     //Observer Auxiliary Classes
     public function attach(\SplObserver $observer) {

@@ -43,6 +43,12 @@ class SparePartRepository extends Repository
         $this->model->where('warehouseid',$warehouseid)->where('id',$spareid)->first()->update(['quantity' => $newquantity]);
     }
 
+    public function getSparePartPrice($sparepartid){
+       $SparePart= $this->model->with(['catalog'])->where('id',$sparepartid)->get();
+       return $SparePart[0]->catalog->unitprice;
+
+    }
+
 
 
 

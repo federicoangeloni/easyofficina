@@ -41,26 +41,45 @@ class JobRepository extends Repository
 
         //Calculate the amount of the spare parts of the job
         $sparePartUsageRepo = new SparePartUsageRepository(App::getInstance());
-        $sparePartAmountCollection = $sparePartUsageRepo->model->where('jobid',$jobid)->select('warehouseid','sparepartid','quantity')->get();
-        $sparePartRepo = new SparePartRepository(App::getInstance());
-        $catalogRepo = new CatalogRepository(App::getInstance());
+        $sparePartCollection=$sparePartUsageRepo->getByJobId($jobid);
+
         $totalAmount = 0;
-        foreach ($sparePartAmountCollection as $sparePartAmount){
-            $catalogId = $sparePartRepo->model->where('warehouseid',$sparePartAmount->warehouseid)->where('id',$sparePartAmount->sparepartid)->select('catalogid')->first();
-            $unitAmount = $catalogRepo->model->where('partid',$catalogId->catalogid)->select('unitprice')->first();
-            $temporaryAmount = ($unitAmount->unitprice * ($sparePartAmount->quantity));
-            $totalAmount = $totalAmount + $temporaryAmount;
+        foreach ($sparePartCollection as $sparePart){
+            //RECUPERA TRAMITE METODO MORPH DI LARAVEL LA CLASSE RELATIVA DAL POLIMORPHISMO
+            $Part=$sparePart->partusage;
+            $totalAmount = $totalAmount + $Part->total_price;
         }
 
-        //Calculate the amount of the services of the job
         $serviceUsageRepo = new ServiceUsageRepository(App::getInstance());
-        $serviceUsageAmountCollection = $serviceUsageRepo->model->where('jobid',$jobid)->select('serviceid','quantity')->get();
-        $serviceRepo = new ServiceRepository(App::getInstance());
-        foreach ($serviceUsageAmountCollection as $serviceAmount){
-            $unitAmount = $serviceRepo->model->where('id',$serviceAmount->serviceid)->first();
-            $temporaryAmount = ($unitAmount->unitprice * ($serviceAmount->quantity));
-            $totalAmount = $totalAmount + $temporaryAmount;
+        $ServiceCollection=$serviceUsageRepo->getByJobId($jobid);
+
+        foreach ($ServiceCollection as $ServiceUsage){
+            //RECUPERA TRAMITE METODO MORPH DI LARAVEL LA CLASSE RELATIVA DAL POLIMORPHISMO
+            $Service=$ServiceUsage->service;
+            $totalAmount = $totalAmount + $Service->total_price;
         }
+
+
+//        $sparePartAmountCollection = $sparePartUsageRepo->model->where('jobid',$jobid)->select('warehouseid','sparepartid','quantity')->get();
+//        $sparePartRepo = new SparePartRepository(App::getInstance());
+//        $catalogRepo = new CatalogRepository(App::getInstance());
+//        $totalAmount = 0;
+//        foreach ($sparePartAmountCollection as $sparePartAmount){
+//            $catalogId = $sparePartRepo->model->where('warehouseid',$sparePartAmount->warehouseid)->where('id',$sparePartAmount->sparepartid)->select('catalogid')->first();
+//            $unitAmount = $catalogRepo->model->where('partid',$catalogId->catalogid)->select('unitprice')->first();
+//            $temporaryAmount = ($unitAmount->unitprice * ($sparePartAmount->quantity));
+//            $totalAmount = $totalAmount + $temporaryAmount;
+//        }
+//
+//        //Calculate the amount of the services of the job
+//        $serviceUsageRepo = new ServiceUsageRepository(App::getInstance());
+//        $serviceUsageAmountCollection = $serviceUsageRepo->model->where('jobid',$jobid)->select('serviceid','quantity')->get();
+//        $serviceRepo = new ServiceRepository(App::getInstance());
+//        foreach ($serviceUsageAmountCollection as $serviceAmount){
+//            $unitAmount = $serviceRepo->model->where('id',$serviceAmount->serviceid)->first();
+//            $temporaryAmount = ($unitAmount->unitprice * ($serviceAmount->quantity));
+//            $totalAmount = $totalAmount + $temporaryAmount;
+//        }
 
         //Update the amount of the job
         $this->model->where('id', $jobid)->update(['amount' => $totalAmount]);

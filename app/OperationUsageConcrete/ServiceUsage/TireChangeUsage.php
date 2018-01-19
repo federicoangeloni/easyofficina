@@ -23,15 +23,20 @@ class TireChangeUsage extends ServiceUsage
 
     }
 
-    public function getunitprice()
+    public function services()
+    {
+        return $this->morphMany('App\OperationUsageConcrete\ServiceUsage\ServiceUsage', 'service');
+    }
+
+    public function getPriceAttribute()
     {
         $ServiceRepository = new ServiceRepository(App::getInstance());
         $Service=$ServiceRepository->getTireChangeService();
         return $Service->unitprice;
     }
 
-    public function gettotalprice(){
-        $unitprice=$this->getunitprice();
+    public function getTotalPriceAttribute(){
+        $unitprice=$this->price;
         return $this->quantity*$unitprice;
     }
 }
