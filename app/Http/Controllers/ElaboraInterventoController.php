@@ -38,18 +38,16 @@ class ElaboraInterventoController extends Controller
         return view('operations.servicesList',compact('services','jobid'));
     }
 
-    public function listOperations($jobid){
+    public function listOperations($jobid, ServiceUsageRepository $serviceUsageRepository,SparePartUsageRepository $sparePartUsageRepository){
 
 
-        $serviceUsageRepo= new ServiceUsageRepository(App::getInstance());
-        $ServiceCollection= $serviceUsageRepo->getByJobId($jobid);
+        $ServiceCollection= $serviceUsageRepository->getByJobId($jobid);
         $Services=[];
         foreach ($ServiceCollection as $Service){
            $Services[]=$Service->toParentService;
        }
 
-        $partUsageRepo= new SparePartUsageRepository(App::getInstance());
-        $PartUsageCollection= $partUsageRepo->getByJobId($jobid);
+        $PartUsageCollection= $sparePartUsageRepository->getByJobId($jobid);
         $PartUsages=[];
         foreach ($PartUsageCollection as $PartUsage){
             $PartUsages[]=$PartUsage->toParentClass;
@@ -81,7 +79,7 @@ class ElaboraInterventoController extends Controller
 
 
         //GET SERVICE AND ADD TO THE OPERATION JOB LIST
-        return $this->listOperations($request->jobid);
+        return redirect()->route('listjoboperations',['jobid' => $request->jobid]);
 
     }
 
@@ -103,9 +101,8 @@ class ElaboraInterventoController extends Controller
         $ServiceUsage->detach($observer);
 
         //GET SERVICE AND ADD TO THE OPERATION JOB LIST
-        //$Operation=$Service->addOperation($jobid);
 
-        return $this->listOperations($request->jobid);
+        return redirect()->route('listjoboperations',['jobid' => $request->jobid]);
 
     }
 }

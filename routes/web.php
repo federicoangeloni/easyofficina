@@ -83,7 +83,7 @@ Route::get('/jobs/{id}', 'JobController@getById');
 ROUTE::get('/jobs/delete/{id}','JobController@delete');
 
 //LIST OPERATIONS
-Route::get('/jobs/{jobid}/operations', 'ElaboraInterventoController@listOperations');
+Route::get('/jobs/{jobid}/operations', 'ElaboraInterventoController@listOperations')->name('listjoboperations');
 
 
 //--------------------------- WAREHOUSE ROUTES ---------------------------------------//queste andranno inglobate nei futuri controller

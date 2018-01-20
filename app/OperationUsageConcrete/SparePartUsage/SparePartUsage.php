@@ -15,7 +15,6 @@ class SparePartUsage extends Model implements \SplSubject
 
     private $jobid;
     private $sparepartid;
-    private $warehouseid;
     private $quantity;
     private $description;
     private $price;
@@ -26,12 +25,12 @@ class SparePartUsage extends Model implements \SplSubject
 
     protected $table = 'sparepartusages';
 
-    public $fillable = ['sparepartid','warehouseid','jobid','description','quantity'];
+    public $fillable = ['sparepartid','jobid','notes','quantity'];
 
     public static $rules = array(
         'sparepartid' => 'nullable',
         'jobid' => 'nullable',
-        'description' => 'nullable',
+        'notes' => 'nullable',
         'quantity' => 'nullable'
     );
 

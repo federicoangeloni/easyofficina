@@ -89,6 +89,6 @@ class JobController extends Controller
     public function delete($id)
     {
         parent::delete($id);
-        return redirect()-route('joblist');
+        return redirect()->route('joblist');
     }
 }

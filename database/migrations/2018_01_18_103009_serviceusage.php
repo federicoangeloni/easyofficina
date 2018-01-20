@@ -16,11 +16,11 @@ class Serviceusage extends Migration
         Schema::create('serviceusages', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->integer('service_id')->nullable();
-            $table->string('service_type')->nullable();
+            $table->integer('recordrecovery_id')->nullable();
+            $table->string('parentclass_type')->nullable();
             $table->string('serviceid')->nullable();
             $table->string('jobid')->nullable();
-            $table->string('description')->nullable();
+            $table->string('notes')->nullable();
             $table->integer('quantity')->nullable();
 
         });

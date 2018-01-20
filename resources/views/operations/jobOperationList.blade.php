@@ -20,7 +20,7 @@
 
             <tr>
                 <th>Name</th>
-                <th>Description</th>
+                <th>Notes</th>
                 <th>UnitPrice</th>
                 <th>Quantity</th>
                 <th>TotalPrice</th>
@@ -31,11 +31,11 @@
             @foreach($Services as $Service)
 
                 <tr>
-                    <td><p for="Name" class="col-sm-4 col-lg-12 control-label">{{$Service->service_details->name}}</p></td>
-                    <td><p for="Description" class="col-sm-3 col-lg-12 control-label">{{$Service->service_details->description}}</p></td>
-                    <td><p for="unitprice" class="col-sm-3 col-lg-12 control-label">{{$Service->service_details->unitprice}}</p></td>
-                    <td><p for="quantity" class="col-sm-3 col-lg-12 control-label">{{$Service->quantity}} </p></td>
-                    <td><p for="totalprice" class="col-sm-3 col-lg-12 control-label">{{$Service->total_price}}</p></td>
+                    <td class="col-lg-3"><p for="Name" class="col-sm-3 col-lg-12 control-label">{{$Service->service_details->name}}</p></td>
+                    <td class="col-lg-4"><p for="Description" class="col-sm-3 col-lg-12 control-label">{{$Service->notes}}</p></td>
+                    <td class="col-lg-2"><p for="unitprice" class="col-sm-3 col-lg-12 control-label">{{$Service->service_details->unitprice}}</p></td>
+                    <td class="col-lg-1"><p for="quantity" class="col-sm-3 col-lg-12 control-label">{{$Service->quantity}} </p></td>
+                    <td class="col-lg-2"><p for="totalprice" class="col-sm-3 col-lg-12 control-label">{{$Service->total_price}}</p></td>
                 </tr>
 
             @endforeach
@@ -59,9 +59,9 @@
 
             <tr>
                 <th>Name</th>
-                <th>Description</th>
-                <th>Quantity</th>
+                <th>Notes</th>
                 <th>UnitPrice</th>
+                <th>Quantity</th>
                 <th>TotalPrice</th>
             </tr>
             </thead>
@@ -69,11 +69,11 @@
             @foreach($PartUsages as $PartUsage)
 
                 <tr>
-                    <td><p for="name" class="col-sm-3 control-label">{{$PartUsage->sparepart->catalog->name}}</p></td>
-                    <td><p for="description" class="col-sm-3 col-lg-12 control-label">{{$PartUsage->sparepart->catalog->description}}</p></td>
-                    <td><p for="quantity" class="col-sm-3 col-lg-12 control-label">{{$PartUsage->quantity}}</p></td>
-                    <td><p for="unitprice" class="col-sm-3 col-lg-12 control-label">{{$PartUsage->price}} </p></td>
-                    <td><p for="price" class="col-sm-3 col-lg-12 control-label">{{$PartUsage->total_price}}</p></td>
+                    <td class="col-lg-3"><p for="name" class="col-sm-3 col-lg-12 control-label">{{$PartUsage->sparepart->catalog->name}}</p></td>
+                    <td class="col-lg-4"><p for="description" class="col-sm-3 col-lg-12 control-label">{{$PartUsage->notes}}</p></td>
+                    <td class="col-lg-2><p for="unitprice" class="col-sm-3 col-lg-12 control-label">{{$PartUsage->price}} </p></td>
+                    <td class="col-lg-1><p for="quantity" class="col-sm-3 col-lg-12 control-label">{{$PartUsage->quantity}}</p></td>
+                    <td class="col-lg-2><p for="price" class="col-sm-3 col-lg-12 control-label">{{$PartUsage->total_price}}</p></td>
                 </tr>
 
             @endforeach

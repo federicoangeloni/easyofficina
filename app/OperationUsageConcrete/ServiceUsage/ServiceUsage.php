@@ -19,12 +19,12 @@ class ServiceUsage extends Model implements \SplSubject
 
     protected $table = 'serviceusages';
 
-    public $fillable = ['recoveryservice_id','serviceid','jobid','description','quantity'];
+    public $fillable = ['recoveryservice_id','serviceid','jobid','notes','quantity'];
 
     public static $rules = array(
         'recoveryservice_id'=>'nullable',
         'jobid' => 'nullable',
-        'description' => 'nullable',
+        'notes' => 'nullable',
         'quantity' => 'nullable'
     );
 

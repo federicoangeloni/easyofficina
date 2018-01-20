@@ -16,15 +16,6 @@ use Illuminate\Container\Container as App;
 class WarehousePartUsage extends SparePartUsage
 {
 
-    public function __construct(array $attributes = [])
-    {
-        $WarehouseRepository = new WarehouseRepository(App::getInstance());
-        $Warehouse=$WarehouseRepository->getWareHouse1();
-        $this->warehouseid=$Warehouse->id;
-        parent::__construct($attributes);
-
-    }
-
     public function toPartUsage()
     {
         return $this->morphMany('App\OperationUsageConcrete\SparePartUsage\SparePartUsage', 'toParentClass','parentclass_type','recordrecovery_id');

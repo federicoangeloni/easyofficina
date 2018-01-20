@@ -16,12 +16,11 @@ class SparePartUsage extends Migration
         Schema::create('sparepartusages', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->integer('partusage_id')->nullable();
-            $table->string('partusage_type')->nullable();
+            $table->integer('recordrecovery_id')->nullable();
+            $table->string('parentclass_type')->nullable();
             $table->integer('sparepartid')->nullable();
-            $table->integer('warehouseid')->nullable();
             $table->integer('jobid')->nullable();
-            $table->string('description')->nullable();
+            $table->string('notes')->nullable();
             $table->integer('quantity')->nullable();
 
         });
