@@ -36,9 +36,9 @@ class SparePartUsage extends Model implements \SplSubject
     );
 
 
-    public function partusage()
+    public function toParentClass()
     {
-        return $this->morphTo();
+        return $this->morphTo(null,'parentclass_type','recordrecovery_id');
     }
 
     public function getPriceAttribute()

@@ -19,10 +19,10 @@ class ServiceUsage extends Model implements \SplSubject
 
     protected $table = 'serviceusages';
 
-    public $fillable = ['service_id','serviceid','jobid','description','quantity'];
+    public $fillable = ['recoveryservice_id','serviceid','jobid','description','quantity'];
 
     public static $rules = array(
-        'service_id' => 'nullable',
+        'recoveryservice_id'=>'nullable',
         'jobid' => 'nullable',
         'description' => 'nullable',
         'quantity' => 'nullable'
@@ -33,9 +33,9 @@ class ServiceUsage extends Model implements \SplSubject
         return $this->belongsTo('App\Service', 'serviceid', 'id');
     }
 
-    public function service()
+    public function toParentService()
     {
-        return $this->morphTo();
+        return $this->morphTo(null,'parentclass_type','recordrecovery_id');
     }
 
     //Observer Auxiliary Classes

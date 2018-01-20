@@ -23,9 +23,9 @@ class TireChangeUsage extends ServiceUsage
 
     }
 
-    public function services()
+    public function toService()
     {
-        return $this->morphMany('App\OperationUsageConcrete\ServiceUsage\ServiceUsage', 'service');
+        return $this->morphOne('App\OperationUsageConcrete\ServiceUsage\ServiceUsage', 'toParentService','parentclass_type','recordrecovery_id');
     }
 
     public function getPriceAttribute()

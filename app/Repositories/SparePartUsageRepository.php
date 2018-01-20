@@ -35,10 +35,10 @@ class SparePartUsageRepository extends Repository
 
     public function savePartUsage($PartUsage){
 
-        $SavedPartUsage=$PartUsage->partusages()->save($PartUsage);
+        $SavedPartUsage=$PartUsage->toPartUsage()->save($PartUsage);
 
         $Part=parent::getById($SavedPartUsage->id);
-        $Part->partusage_id=$Part->id;
+        $Part->recordrecovery_id=$Part->id;
         $Part->save();
 
     }

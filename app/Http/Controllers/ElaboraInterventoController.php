@@ -45,14 +45,14 @@ class ElaboraInterventoController extends Controller
         $ServiceCollection= $serviceUsageRepo->getByJobId($jobid);
         $Services=[];
         foreach ($ServiceCollection as $Service){
-           $Services[]=$Service->service;
+           $Services[]=$Service->toParentService;
        }
 
         $partUsageRepo= new SparePartUsageRepository(App::getInstance());
         $PartUsageCollection= $partUsageRepo->getByJobId($jobid);
         $PartUsages=[];
         foreach ($PartUsageCollection as $PartUsage){
-            $PartUsages[]=$PartUsage->partusage;
+            $PartUsages[]=$PartUsage->toParentClass;
         }
 
       return view('operations.jobOperationList',compact('jobid','Services','PartUsages'));

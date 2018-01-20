@@ -19,4 +19,12 @@ class Job extends Model
         'amount' => 'nullable',
         'completed' => 'required'
     );
+
+    public function servicable()
+    {
+        return $this->morphTo();
+    }
+
 }
+
+

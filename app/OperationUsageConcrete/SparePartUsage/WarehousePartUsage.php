@@ -25,9 +25,9 @@ class WarehousePartUsage extends SparePartUsage
 
     }
 
-    public function partusages()
+    public function toPartUsage()
     {
-        return $this->morphMany('App\OperationUsageConcrete\SparePartUsage\SparePartUsage', 'partusage');
+        return $this->morphMany('App\OperationUsageConcrete\SparePartUsage\SparePartUsage', 'toParentClass','parentclass_type','recordrecovery_id');
     }
 
     public function getPriceAttribute()

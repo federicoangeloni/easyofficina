@@ -46,7 +46,7 @@ class JobRepository extends Repository
         $totalAmount = 0;
         foreach ($sparePartCollection as $sparePart){
             //RECUPERA TRAMITE METODO MORPH DI LARAVEL LA CLASSE RELATIVA DAL POLIMORPHISMO
-            $Part=$sparePart->partusage;
+            $Part=$sparePart->toParentClass;
             $totalAmount = $totalAmount + $Part->total_price;
         }
 
@@ -55,7 +55,7 @@ class JobRepository extends Repository
 
         foreach ($ServiceCollection as $ServiceUsage){
             //RECUPERA TRAMITE METODO MORPH DI LARAVEL LA CLASSE RELATIVA DAL POLIMORPHISMO
-            $Service=$ServiceUsage->service;
+            $Service=$ServiceUsage->toParentService;
             $totalAmount = $totalAmount + $Service->total_price;
         }
 

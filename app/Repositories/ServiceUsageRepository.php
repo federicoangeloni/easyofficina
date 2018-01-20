@@ -30,15 +30,15 @@ class ServiceUsageRepository extends Repository
 
     public function getByJobId($jobid){
          return $this->model->with(['service_details'])->where('jobid',$jobid)->get();
-       // $Services =parent::search(array('jobid'=>$jobid));
-     //   return  $Services;
+
     }
     public function saveService($ServiceUsage){
 
-        $SavedService=$ServiceUsage->services()->save($ServiceUsage);
+        $SavedService=$ServiceUsage->toService()->save($ServiceUsage);
 
           $Service=parent::getById($SavedService->id);
-          $Service->service_id=$Service->id;
+
+          $Service->recordrecovery_id=$Service->id;
           $Service->save();
 
     }
