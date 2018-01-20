@@ -33,5 +33,9 @@ class WarehousePartUsage extends SparePartUsage
         return $this->quantity*$unitprice;
     }
 
+    public function getWarehouseidAttribute(){
+        return 1;
+    }
+
 
 }

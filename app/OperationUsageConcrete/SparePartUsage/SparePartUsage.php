@@ -40,13 +40,6 @@ class SparePartUsage extends Model implements \SplSubject
         return $this->morphTo(null,'parentclass_type','recordrecovery_id');
     }
 
-    public function getPriceAttribute()
-    {
-        //do whatever you want to do
-        return 'sdsd';
-    }
-
-    public function gettotalprice(){}
 
     public function sparepart()
     {

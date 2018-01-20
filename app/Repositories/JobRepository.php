@@ -58,7 +58,7 @@ class JobRepository extends Repository
             $Service=$ServiceUsage->toParentService;
             $totalAmount = $totalAmount + $Service->total_price;
         }
-
+        $totalAmount = round($totalAmount, 2);
 
 //        $sparePartAmountCollection = $sparePartUsageRepo->model->where('jobid',$jobid)->select('warehouseid','sparepartid','quantity')->get();
 //        $sparePartRepo = new SparePartRepository(App::getInstance());
