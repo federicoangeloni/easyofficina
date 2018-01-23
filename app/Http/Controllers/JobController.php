@@ -91,4 +91,9 @@ class JobController extends Controller
         parent::delete($id);
         return redirect()->route('joblist');
     }
+
+    public function closeJob($id){
+        $this->ActiveRepository->closeJob($id);
+        return redirect()->route('joblist');
+    }
 }

@@ -16,10 +16,20 @@ class CreateSparePartsTable extends Migration
         Schema::create('spareparts', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->integer('catalogid')->unsigned();
+            $table->string('catalogid');
             $table->integer('warehouseid')->unsigned();
             $table->integer('quantity');
         });
+
+        DB::table('spareparts')->insert([
+            ['catalogid' => 'A129A452DE',
+            'warehouseid' => '1',
+            'quantity' => '22'],
+
+            ['catalogid' => 'A129B234RE',
+            'warehouseid' => '1',
+            'quantity' => '214']
+        ]);
     }
 
     /**

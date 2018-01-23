@@ -53,7 +53,6 @@
             <li><a href="#"><i class="fa fa-wrench"></i> <span>Manage Spare Parts</span></a>
                 <ul class="treeview-menu">
                     <li><a href="/spareparts/search">Search a Spare Part</a></li>
-                    <li><a href="/spareparts/add">Add a Spare Part to a Warehouse</a></li>
                 </ul>
             </li>
             <hr>

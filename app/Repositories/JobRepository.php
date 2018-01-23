@@ -45,7 +45,7 @@ class JobRepository extends Repository
 
         $totalAmount = 0;
         foreach ($sparePartCollection as $sparePart){
-            //RECUPERA TRAMITE METODO MORPH DI LARAVEL LA CLASSE RELATIVA DAL POLIMORPHISMO
+            //RECUPERA TRAMITE METODO MORPH DI LARAVEL LA CLASSE RELATIVA DAL POLIMORFISMO
             $Part=$sparePart->toParentClass;
             $totalAmount = $totalAmount + $Part->total_price;
         }
@@ -54,7 +54,7 @@ class JobRepository extends Repository
         $ServiceCollection=$serviceUsageRepo->getByJobId($jobid);
 
         foreach ($ServiceCollection as $ServiceUsage){
-            //RECUPERA TRAMITE METODO MORPH DI LARAVEL LA CLASSE RELATIVA DAL POLIMORPHISMO
+            //RECUPERA TRAMITE METODO MORPH DI LARAVEL LA CLASSE RELATIVA DAL POLIMORFISMO
             $Service=$ServiceUsage->toParentService;
             $totalAmount = $totalAmount + $Service->total_price;
         }
@@ -83,6 +83,12 @@ class JobRepository extends Repository
 
         //Update the amount of the job
         $this->model->where('id', $jobid)->update(['amount' => $totalAmount]);
+    }
+
+    public function closeJob($jobid){
+
+        $this->model->where('id', $jobid)->update(['completed' => 1]);
+
     }
 
 }

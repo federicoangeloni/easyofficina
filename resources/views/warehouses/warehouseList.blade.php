@@ -27,7 +27,7 @@
                     <td><p for="name" class="col-sm-3 col-lg-12 control-label">{{$warehouse->name}}</p></td>
                     <td><p for="name" class="col-sm-3 col-lg-12 control-label">{{$warehouse->address}}</p></td>
                     <td><p for="name" class="col-sm-3 col-lg-12 control-label">{{$warehouse->description}}</p></td>
-                    <td><p for="name" class="col-sm-3 col-lg-12 control-label">{{$customer->address}}</p></td>
+                    <td><p for="name" class="col-sm-3 col-lg-12 control-label">{{$warehouse->address}}</p></td>
                     <td>
                         <a href="/warehouses/{{$warehouse->id}}"><input type="button" class="btn btn-flat btn-primary"
                                                                       value="Show Details"/></a>

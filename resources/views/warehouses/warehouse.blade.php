@@ -40,11 +40,11 @@
                             <a href="#" class="btn btn-primary btn-block"><i class="fa fa-edit"></i> <b>Edit</b></a>
                         </div>
                         <div class="col-lg-4">
-                            <a href="/spareparts/search/{{$warehouse->id}}" class="btn btn-primary btn-block"><i
+                            <a href="/spareparts" class="btn btn-primary btn-block"><i
                                         class="fa fa-list"></i> <b> List Spare Parts </b> <i class="fa fa-automobile"></i></a>
                         </div>
                         <div class="col-lg-4">
-                            <a href="/spareparts/add/{{$warehouse->id}}" class="btn btn-primary btn-block"><i
+                            <a href="#" class="btn btn-primary btn-block"><i
                                         class="fa fa-plus"></i> <b> Add Spare Part</b> <i class="fa fa-automobile"></i>
                             </a>
                         </div>

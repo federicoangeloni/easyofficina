@@ -75,6 +75,9 @@ Route::get('/jobs/search/{vehicleid}', 'JobController@searchByVehicleId');
 Route::get('/jobs/add/{vehicleid}', 'JobController@addIndex');
 Route::post('/jobs/add', 'JobController@add');
 
+//CLOSE JOB
+Route::get('/jobs/close/{id}', 'JobController@closeJob');
+
 //LIST ALL JOBS
 Route::get('/jobs', 'JobController@getall')->name('joblist');
 Route::get('/jobs/{id}', 'JobController@getById');
@@ -118,7 +121,7 @@ Route::post('/spareparts/search', 'SparePartController@searchResult');
 //LIST ALL PARTS IN THE WAREHOUSES
 Route::get('/spareparts', 'SparePartController@getall');
 Route::get('/spareparts/{id}', 'SparePartController@getById')->name('spareparts');
-Route::get('/spareparts/warehouse/{id}', 'SparePartController@getByWarehouseId')->name('sparepartsWarehouse');
+//Route::get('/spareparts/warehouse/{id}', 'SparePartController@getByWarehouseId')->name('sparepartsWarehouse');
 
 //ADD A SPAREPART TO A WAREHOUSE
 //To do

@@ -17,8 +17,15 @@ class CreateWarehousesTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('name')->nullable();
+            $table->string('address')->nullable();
             $table->string('description')->nullable();
         });
+
+        DB::table('warehouses')->insert([
+            ['name' => 'Magazzino Interno 1',
+            'address' => 'Via Avezzano n°95',
+            'description' => 'Magazzino interno all\'officina']
+        ]);
     }
 
     /**
