@@ -19,4 +19,11 @@ class Vehicle extends Model
         'kilometers' => 'required',
         'matriculation' => 'required'
     );
+
+    public function customer()
+    {
+        return $this->belongsTo('App\Customer', 'ownerid', 'id');
+    }
+
 }
+

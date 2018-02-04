@@ -34,7 +34,7 @@ class JobRepository extends Repository
         $query = array();
         $key = 'vehicleid';
         $query[] = array($key, 'LIKE', "%$vehicleid%");
-        return $this->model->where($query)->get();
+        return $this->model->with('vehicle.customer')->where($query)->get();
     }
 
     public function calculateTotalAmount($jobid){

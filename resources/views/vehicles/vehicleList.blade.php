@@ -9,12 +9,11 @@
 
     <div class="panel-body">
         <!-- Display Validation Errors -->
-
+        <strong> VEHICLE LIST OF: <a href="/customers/{{$vehicles[0]->ownerid}}">{{$vehicles[0]->customer->name}}</a></strong>
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>id</th>
-                <th>Owner ID</th>
+
                 <th>Model</th>
                 <th>Plate</th>
                 <th>Chassis</th>
@@ -27,9 +26,8 @@
             @foreach($vehicles as $vehicle)
 
                 <tr>
-                    <td><p for="id" class="col-sm-1 col-lg-12 control-label">{{$vehicle->id}}</p></td>
-                    <td><p for="ownerid" class="col-sm-1 col-lg-12 control-label"><a
-                                    href="/customers/{{$vehicle->ownerid}}">{{$vehicle->ownerid}}</a></p></td>
+
+
                     <td><p for="model" class="col-sm-3 col-lg-12 control-label">{{$vehicle->model}}</p></td>
                     <td><p for="plate" class="col-sm-2 col-lg-12 control-label">{{$vehicle->plate}}</p></td>
                     <td><p for="chassis" class="col-sm-1 col-lg-12 control-label">{{$vehicle->chassis}}</p></td>

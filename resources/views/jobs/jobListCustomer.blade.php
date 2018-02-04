@@ -9,11 +9,12 @@
 
     <div class="panel-body">
         <!-- Display Validation Errors -->
+        <strong> JOBS CLIENT: <a href="/customers/{{$jobs[0]->vehicle->ownerid}}">{{$jobs[0]->vehicle->customer->name}}</a></strong>
         <table class="table table-striped">
             <thead>
             <tr>
                 {{--<th>id</th>--}}
-                <th>Vehicle ID</th>
+                <th>Vehicle</th>
                 <th>Job Date</th>
                 <th>Description</th>
                 <th>Amount</th>
@@ -26,7 +27,7 @@
                 <tr>
                     {{--<td><p for="id" class="col-sm-3 control-label">{{$job->id}}</p></td>--}}
                     <td><p for="vehicleid" class="col-sm-3 col-lg-12 control-label"><a
-                                    href="/vehicles/{{$job->vehicleid}}">{{$job->vehicleid}}</a></p></td>
+                                    href="/vehicles/{{$job->vehicleid}}">{{$job->vehicle->model}}</a></p></td>
                     <td><p for="jobdate" class="col-sm-3 col-lg-12 control-label">{{$job->jobdate}}</p></td>
                     <td><p for="description" class="col-sm-3 col-lg-12 control-label">{{$job->description}}</p></td>
                     <td><p for="amount" class="col-sm-3 col-lg-12 control-label">{{$job->amount}}</p></td>

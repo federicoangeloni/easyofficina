@@ -13,7 +13,7 @@ class Job extends Model
 
     public static $rules = array(
         'jobdate' => 'required',
-        'vehicleId' => 'required',
+        'vehicleid' => 'required',
         //'jobRows' => 'nullable',
         'description' => 'nullable',
         'amount' => 'nullable',
@@ -23,6 +23,11 @@ class Job extends Model
     public function servicable()
     {
         return $this->morphTo();
+    }
+
+    public function vehicle()
+    {
+        return $this->belongsTo('App\Vehicle', 'vehicleid', 'id');
     }
 
 }

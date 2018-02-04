@@ -32,7 +32,7 @@ class VehicleRepository extends Repository
         $query = array();
         $key = 'ownerid';
         $query[] = array($key, 'LIKE', "%$ownerid%");
-        return $this->model->where($query)->get();
+        return $this->model->where($query)->with('customer')->get();
     }
 
 

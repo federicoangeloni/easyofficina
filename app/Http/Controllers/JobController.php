@@ -70,7 +70,7 @@ class JobController extends Controller
     {
 
         $jobs = $this->ActiveRepository->searchByVehicleId($vehicleid);
-        return view('jobs.jobList')->with('jobs', $jobs);
+        return view('jobs.jobListCustomer')->with('jobs', $jobs);
 
     }
 
