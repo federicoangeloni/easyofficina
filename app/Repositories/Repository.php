@@ -22,7 +22,6 @@ abstract class Repository implements RepositoryInterface
         $this->model = $this->app->make($this->setmodel());
     }
 
-
     public function getall()
     {
         return $this->model->all();
