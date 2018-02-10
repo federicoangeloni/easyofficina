@@ -2,7 +2,7 @@
 
 @section('title','List all Spare Parts from all warehouses')
 @section('header','List all Spare Parts from all warehouses')
-
+@section('PageName','List of all SpareParts')
 @section('content')
 
 

@@ -2,7 +2,7 @@
 
 @section('title','Jobs List')
 @section('header','Jobs List')
-
+@section('PageName','Jobs List')
 @section('content')
 
 
@@ -26,7 +26,7 @@
                 <tr>
                     {{--<td><p for="id" class="col-sm-3 control-label">{{$job->id}}</p></td>--}}
                     <td><p for="vehicleid" class="col-sm-3 col-lg-12 control-label"><a
-                                    href="/vehicles/{{$job->vehicleid}}">{{$job->vehicleid}}</a></p></td>
+                                    href="/vehicles/{{$job->vehicleid}}">{{$job->vehicle->model}}</a></p></td>
                     <td><p for="jobdate" class="col-sm-3 col-lg-12 control-label">{{$job->jobdate}}</p></td>
                     <td><p for="description" class="col-sm-3 col-lg-12 control-label">{{$job->description}}</p></td>
                     <td><p for="amount" class="col-sm-3 col-lg-12 control-label">{{$job->amount}}</p></td>

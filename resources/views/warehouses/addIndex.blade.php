@@ -2,7 +2,7 @@
 
 @section('title','Add a new Warehouse')
 @section('header','Add a new Warehouse')
-
+@section('PageName','Add a new Warehouse')
 @section('content')
 
     @if (count($errors) > 0)

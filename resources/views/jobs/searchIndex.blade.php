@@ -2,7 +2,7 @@
 
 @section('title','Search Jobs')
 @section('header','Search Jobs')
-
+@section('PageName','Search a Job')
 @section('content')
 
     <!-- Bootstrap Boilerplate... -->

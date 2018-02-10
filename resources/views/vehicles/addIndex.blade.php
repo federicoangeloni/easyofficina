@@ -2,7 +2,9 @@
 
 @section('title','Add a new vehicle')
 @section('header','Add a new vehicle')
-
+@section('PageName')
+    Add a new Vehicle to {{$customername}}
+    @endsection
 @section('content')
 
     @if (count($errors) > 0)
@@ -25,9 +27,9 @@
             {{ csrf_field() }}
 
             <div class="form-group">
-                <label for="ownerid" class="col-sm-3 control-label">Owner ID</label>
+                <label for="ownerid" class="col-sm-3 control-label">Owner</label>
                 <div class="col-sm-6">
-                    <input type="text" name="owneridshow" id="task-name" class="form-control" value="{{$ownerid}}"
+                    <input type="text" name="owneridshow" id="task-name" class="form-control" value="{{$customername}}"
                            disabled="disabled">
                     <input type="hidden" name="ownerid" id="task-name" class="form-control" value="{{$ownerid}}">
                 </div>

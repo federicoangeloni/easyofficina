@@ -2,7 +2,7 @@
 
 @section('title','Jobs List')
 @section('header','Jobs List')
-
+@section('PageName','List of Available SpareParts')
 @section('content')
 
 
@@ -33,7 +33,7 @@
                     <input type="hidden" name="sparepartid" id="task-name" class="form-control" value="{{$sparepart->id}}">
                 <tr>
                     {{--<td><p for="id" class="col-sm-3 control-label">{{$job->id}}</p></td>--}}
-                    <td><p for="name" class="col-sm-3 col-lg-12 control-label">{{$sparepart->catalog['name']}}</p></td>
+                    <td><p for="name" class="col-sm-3 col-lg-12 control-label"><strong>{{$sparepart->catalog['name']}}</strong></p></td>
                     <td><p for="warehouse" class="col-sm-3 col-lg-12 control-label">{{$sparepart->warehouse['name']}}</p></td>
                     <td><p for="quantity" class="col-sm-3 col-lg-12 control-label">{{$sparepart->quantity}}</p></td>
                     <td><p for="price" class="col-sm-3 col-lg-12 control-label">{{$sparepart->catalog['unitprice']}}</p></td>

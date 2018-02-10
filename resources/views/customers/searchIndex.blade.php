@@ -2,6 +2,7 @@
 
 @section('title','Search Customers')
 @section('header','Search Customers')
+@section('PageName','Search Customers')
 
 @section('content')
 

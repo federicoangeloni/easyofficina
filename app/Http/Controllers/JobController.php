@@ -32,21 +32,11 @@ class JobController extends Controller
 
     public function getById($id)
     {
-        $job = parent::getById($id);
-
-        //Get The Jobs Vehicle Name From Database
-        $vehicle = $this->vehicleRepository->getById($job->vehicleid);
-        //Add Vehicle Name to Job object for View
-        $job->vehicle=$vehicle->model;
-
-        //Get The Jobs Customer Name From Database
-        $customer = $this->customerRepository->getById($vehicle->ownerid);
-        //Add Customer Name to Job object for View
-        $job->customer = $customer->name." ".$customer->surname;
+        $job = $this->ActiveRepository->getById($id);
 
         $this->ActiveRepository->calculateTotalAmount($id);
 
-        return view('jobs.job')->with('job', $job);
+        return view('jobs.job')->with('job', $job[0]);
     }
 
     public function searchIndex()
@@ -83,6 +73,7 @@ class JobController extends Controller
     public function add(Request $request)
     {
         $job = parent::add($request);
+        //return redirect()->route('job',['id'=>$job->id]);
         return view('jobs.job')->with('job', $job);
     }
 

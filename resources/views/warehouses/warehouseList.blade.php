@@ -1,8 +1,8 @@
 @extends('layouts.main')
 
-@section('title','List all Customers')
-@section('header','List all Customers')
-
+@section('title','List all Warehouses')
+@section('header','List all Warehouses')
+@section('PageName','List all Warehouses')
 @section('content')
 
 

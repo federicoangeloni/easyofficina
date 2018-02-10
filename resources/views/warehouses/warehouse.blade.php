@@ -2,7 +2,7 @@
 
 @section('title','Warehouse Details')
 @section('header','Warehouse Details')
-
+@section('PageName','Warehouse Details')
 @section('content')
 
 

@@ -2,7 +2,7 @@
 
 @section('title','Add a new job')
 @section('header','Add a new job')
-
+@section('PageName','Create New Job')
 @section('content')
 
     @if (count($errors) > 0)
@@ -28,9 +28,9 @@
             <div class="form-group">
                 <label for="vehicleid" class="col-sm-3 control-label">Vehicle ID</label>
                 <div class="col-sm-6">
-                    <input type="text" name="vehicleId" id="task-name" class="form-control" value="{{$vehicleid}}"
+                    <input type="text" name="vehicleid" id="task-name" class="form-control" value="{{$vehicleid}}"
                            disabled="disabled">
-                    <input type="hidden" name="vehicleId" id="task-name" class="form-control" value="{{$vehicleid}}">
+                    <input type="hidden" name="vehicleid" id="task-name" class="form-control" value="{{$vehicleid}}">
                 </div>
             </div>
 
@@ -50,23 +50,23 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                <label for="amount" class="col-sm-3 control-label">Amount</label>
-                <div class="col-sm-6">
-                    <input type="text" name="amount" id="task-name" class="form-control">
-                </div>
-            </div>
+            {{--<div class="form-group">--}}
+                {{--<label for="amount" class="col-sm-3 control-label">Amount</label>--}}
+                {{--<div class="col-sm-6">--}}
+                    {{--<input type="text" name="amount" id="task-name" class="form-control">--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            <input type="hidden" name="completed" value="0">
 
-
-            <div class="form-group">
-                <label for="completed" class="col-sm-3 control-label">Completed</label>
-                <div class="col-sm-6">
-                    <select name="completed" class="form-control">
-                        <option value="0" selected>False</option>
-                        <option value="1">True</option>
-                    </select>
-                </div>
-            </div>
+            {{--<div class="form-group">--}}
+                {{--<label for="completed" class="col-sm-3 control-label">Completed</label>--}}
+                {{--<div class="col-sm-6">--}}
+                    {{--<select name="completed" class="form-control">--}}
+                        {{--<option value="0" selected>False</option>--}}
+                        {{--<option value="1">True</option>--}}
+                    {{--</select>--}}
+                {{--</div>--}}
+            {{--</div>--}}
 
 
             <!-- Add Task Button -->

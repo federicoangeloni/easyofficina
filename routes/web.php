@@ -58,7 +58,7 @@ Route::post('/vehicles/add', 'VehicleController@add');
 
 //LIST ALL VEHICLES
 Route::get('/vehicles', 'VehicleController@getall')->name('vehiclelist');
-Route::get('/vehicles/{id}', 'VehicleController@getById');
+Route::get('/vehicles/{id}', 'VehicleController@getById')->name('vehicle');
 
 //DELETE VEHICLE
 ROUTE::get('/vehicles/delete/{id}','VehicleController@delete');
@@ -80,7 +80,7 @@ Route::get('/jobs/close/{id}', 'JobController@closeJob');
 
 //LIST ALL JOBS
 Route::get('/jobs', 'JobController@getall')->name('joblist');
-Route::get('/jobs/{id}', 'JobController@getById');
+Route::get('/jobs/{id}', 'JobController@getById')->name('job');
 
 //DELETE JOB
 ROUTE::get('/jobs/delete/{id}','JobController@delete');

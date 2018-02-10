@@ -2,7 +2,7 @@
 
 @section('title','Add a new Private Customer')
 @section('header','Add a new Private Customer')
-
+@section('PageName','Add a new Private Customer')
 @section('content')
 
     @if (count($errors) > 0)

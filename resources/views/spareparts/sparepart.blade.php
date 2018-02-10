@@ -2,7 +2,7 @@
 
 @section('title','Spare Part Details')
 @section('header','Spare Part Details')
-
+@section('PageName','SparePart')
 @section('content')
 
 

@@ -14,6 +14,16 @@ class VehicleRepository extends Repository
         return $this->model = "App\Vehicle";
     }
 
+    public function getById($id){
+
+
+        $query = array();
+        $key = 'id';
+        $query[] = array($key, '=', $id);
+        return $this->model->where($query)->with('customer')->get()[0];
+
+    }
+
     public function searchByOwnerId($ownerid)
     {
         $query = array();

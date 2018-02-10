@@ -33,5 +33,8 @@ class SparePartsObservers implements \SplObserver
         //Update the Amount of the Job
         $jobsRepo = new JobRepository(App::getInstance());
         $jobsRepo->calculateTotalAmount($subject->jobid);
+        //Update the Warehouse
+        $SparePartRepo = new SparePartRepository(App::getInstance());
+        $SparePartRepo->updateQuantity($this->sparepartid,$this->warehouseid,$this->quantity);
     }
 }

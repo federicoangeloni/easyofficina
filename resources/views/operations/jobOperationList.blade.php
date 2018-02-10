@@ -2,7 +2,7 @@
 
 @section('title','Operation List')
 @section('header','Operation  List')
-
+@section('PageName','Job Operations List')
 @section('content')
 
     <div class="panel-body">

@@ -2,7 +2,7 @@
 
 @section('title','Search Parts in the Catalog')
 @section('header','Search Parts in the Catalog')
-
+@section('PageName','Search Spare Parts')
 @section('content')
 
     <!-- Bootstrap Boilerplate... -->

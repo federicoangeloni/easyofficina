@@ -2,7 +2,7 @@
 
 @section('title','Add a new customer')
 @section('header','Add a new customer')
-
+@section('PageName','Add a new Customer')
 @section('content')
 
     <link rel="stylesheet" href="{{asset("css/customers/addSelectType.css")}}">

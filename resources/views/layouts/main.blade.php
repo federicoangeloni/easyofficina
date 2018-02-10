@@ -77,9 +77,13 @@ desired effect
 <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
+        <div class="callout callout-info">
+            <h4> @yield('PageName')</h4>
+        </div>
         <section class="content-header">
 
-            <small>{{ $page_description or null }}</small>
+
+
 
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>

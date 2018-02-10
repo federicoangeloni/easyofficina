@@ -2,7 +2,7 @@
 
 @section('title','Jobs List')
 @section('header','Jobs List')
-
+@section('PageName','List of Available Services')
 @section('content')
 
 
@@ -34,8 +34,7 @@
                     <input type="hidden" name="serviceid" id="task-name" class="form-control" value="{{$service->id}}">
                     <input type="hidden" name="servicecode" id="task-name" class="form-control" value="{{$service->code}}">
                 <tr>
-                    {{--<td><p for="id" class="col-sm-3 control-label">{{$job->id}}</p></td>--}}
-                    <td><p for="name" class="col-sm-3 col-lg-12 control-label">{{$service->name}}</p></td>
+                    <td><p for="name" class="col-sm-3 col-lg-12 control-label"><strong>{{$service->name}}</strong></p></td>
                     <td><p for="description" class="col-sm-3 col-lg-12 control-label">{{$service->description}}</p></td>
                     <td><p for="unit" class="col-sm-3 col-lg-12 control-label">{{$service->unit}}</p></td>
                     <td><p for="unitprice" class="col-sm-3 col-lg-12 control-label">{{$service->unitprice}}</p></td>

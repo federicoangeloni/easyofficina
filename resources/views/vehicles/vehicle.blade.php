@@ -2,7 +2,7 @@
 
 @section('title','Vehicles Details')
 @section('header','Vehicles Details')
-
+@section('PageName','Vehicle Details')
 @section('content')
 
     <!-- Display Validation Errors -->
@@ -15,7 +15,7 @@
 
                     <h3 class="profile-username text-center">{{$vehicle->model}}</h3>
 
-                    <p class="text-muted text-center">{{$vehicle->customer}}</p>
+                    <p class="text-muted text-center"><a href="/customers/{{$vehicle->customer->id}}">{{$vehicle->customer->name}} {{$vehicle->customer->surname}}</a></p>
 
                     <ul class="list-group list-group-unbordered">
                         <li class="list-group-item">

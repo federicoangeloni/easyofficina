@@ -2,6 +2,7 @@
 
 @section('title','List all Customers')
 @section('header','List all Customers')
+@section('PageName','List all Customers')
 
 @section('content')
 

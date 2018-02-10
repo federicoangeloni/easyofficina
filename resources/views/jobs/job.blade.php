@@ -2,7 +2,7 @@
 
 @section('title','Job Details')
 @section('header','Job Details')
-
+@section('PageName','View Job')
 @section('content')
 
     <div class="row">
@@ -11,14 +11,14 @@
             <div class="box box-primary">
                 <div class="box-body box-profile">
 
-                    <h3 class="profile-username text-center">{{$job->vehicle}}</h3>
+                    <h3 class="profile-username text-center"><a href="/vehicles/{{$job->vehicle->id}}">{{$job->vehicle->model}}</a></h3>
 
-                    <p class="text-muted text-center">{{$job->customer}}</p>
+                    <p class="text-muted text-center"><a href="/customers/{{$job->vehicle->customer->id}}">{{$job->vehicle->customer->name}} {{$job->vehicle->customer->surname}} </a></p>
 
                     <ul class="list-group list-group-unbordered">
-                        <li class="list-group-item">
-                            <b>Job Id</b> <a class="pull-right">{{$job->id}}</a>
-                        </li>
+                        {{--<li class="list-group-item">--}}
+                            {{--<b>Job Id</b> <a class="pull-right">{{$job->id}}</a>--}}
+                        {{--</li>--}}
                         <li class="list-group-item">
                             <b>Job Date</b> <a class="pull-right">{{$job->jobdate}}</a>
                         </li>
@@ -29,7 +29,12 @@
                             <b>Amount</b> <a class="pull-right">{{$job->amount}}</a>
                         </li>
                         <li class="list-group-item">
-                            <b>Completed</b> <a class="pull-right">{{$job->completed}}</a>
+
+                            <b>Status</b>  @if($job->completed==0)
+                                <span class="badge bg-red">in progress</span>
+                            @else
+                                <span class="badge bg-green">completed</span>
+                            @endif
                         </li>
 
                     </ul>

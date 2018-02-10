@@ -28,18 +28,14 @@ class VehicleController extends Controller
     public function getall()
     {
         $vehicles = parent::getall();
-        return view('vehicles.vehicleList')->with('vehicles', $vehicles);
+        return view('vehicles.vehicleList',compact('vehicles'));
     }
 
     public function getById($id)
     {
-        $vehicle = parent::getById($id);
-        //Get Vehicles Customer Name From Database
-        $customer = $this->customerRepository->getById($vehicle->ownerid);
-        //Add customer name to the vehicle object for the view
-        $vehicle->customer = $customer->name." ".$customer->surname;
+        $vehicle = $this->ActiveRepository->getById($id);
 
-        return view('vehicles.vehicle')->with('vehicle',$vehicle);
+        return view('vehicles.vehicle',compact('vehicle'));
     }
 
     public function searchIndex()
@@ -50,27 +46,30 @@ class VehicleController extends Controller
     public function searchByOwnerId($ownerid)
     {
         $vehicles = $this->ActiveRepository->searchByOwnerId($ownerid);
-        return view('vehicles.vehicleList')->with('vehicles', $vehicles);
+        return view('vehicles.vehicleList',compact('vehicles'));
     }
 
     public function searchResult(Request $filters)
     {
 
         $vehicles = parent::searchResult($filters);
-        return view('vehicles.vehicleList')->with('vehicles', $vehicles);
+        return view('vehicles.vehicleList',compact('vehicles'));
 
     }
 
-    public function addIndex($ownerid)
+    public function addIndex($ownerid, CustomerRepository $customerRepository)
     {
-        return view('vehicles.addIndex')->with('ownerid', $ownerid);
+        $customer=$this->customerRepository->getById($ownerid);
+        $customername=$customer->name." ".$customer->surname;
+        return view('vehicles.addIndex',compact('ownerid','customername'));
     }
 
     public function add(Request $request)
     {
         $request['matriculation'] = Carbon::createFromFormat('d/m/Y', $request->input('matriculation'))->format('d-m-y');
         $vehicle = parent::add($request);
-        return view('vehicles.vehicle')->with('vehicle', $vehicle);
+        return redirect()->route('vehicle',['id'=>$vehicle->id]);
+
     }
 
     public function delete($id)

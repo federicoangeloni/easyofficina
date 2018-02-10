@@ -29,6 +29,13 @@ class JobRepository extends Repository
         return $this->model = "App\Job";
     }
 
+    public function getById($id){
+        $query = array();
+        $key = 'id';
+        $query[] = array($key, '=', $id);
+        return $this->model->where($query)->with('vehicle.customer')->get();
+    }
+
     public function searchByVehicleId($vehicleid)
     {
         $query = array();

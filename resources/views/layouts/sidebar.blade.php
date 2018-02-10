@@ -10,7 +10,7 @@
                 <img src="{{asset("/images/mechanic.png")}}" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-                <p>Active User</p>
+                <p>Shop Assistant</p>
             </div>
         </div>
 
